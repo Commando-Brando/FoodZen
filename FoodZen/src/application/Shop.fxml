@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="570.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="154.0" fitWidth="152.0" layoutX="20.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../graphics/foodZ.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="186.0" layoutY="33.0" prefHeight="91.0" prefWidth="160.0" text="Shop">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <Button alignment="CENTER" layoutX="20.0" layoutY="157.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="84.0" text="Produce" />
+      <Button alignment="CENTER" layoutX="121.0" layoutY="157.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="84.0" text="Meat" />
+      <Button alignment="CENTER" layoutX="224.0" layoutY="157.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="84.0" text="Dairy" />
+      <Button alignment="CENTER" layoutX="330.0" layoutY="157.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="84.0" text="Grains" />
+      <Button alignment="CENTER" layoutX="433.0" layoutY="157.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="84.0" text="Condiments" />
+      <Button alignment="CENTER" layoutX="538.0" layoutY="157.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="84.0" text="Drinks" />
+      <Button alignment="CENTER" layoutX="643.0" layoutY="157.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="84.0" text="Snacks" />
+      <ImageView fitHeight="280.0" fitWidth="436.0" layoutX="33.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../graphics/top10.png" />
+         </image></ImageView>
+      <Button layoutX="533.0" layoutY="418.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="160.0" text="Return to Home">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="149.0" fitWidth="228.0" layoutX="499.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../graphics/insertFeature.png" />
+         </image></ImageView>
+      <Label layoutX="330.0" layoutY="68.0" prefHeight="38.0" prefWidth="354.0" text="Browse all our delicious food items here!">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
