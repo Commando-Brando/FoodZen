@@ -37,7 +37,7 @@
       </Label>
       <ImageView fitHeight="329.0" fitWidth="307.0" layoutX="33.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@20us.png" />
+            <Image url="@graphics/about%20us.png" />
          </image></ImageView>
       <ImageView fitHeight="150.0" fitWidth="486.0" layoutX="403.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
          <image>
