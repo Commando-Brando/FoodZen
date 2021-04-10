@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="169.0" fitWidth="175.0" layoutX="29.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../graphics/foodZ.png" />
+            <Image url="@graphics/foodZ.png" />
          </image>
       </ImageView>
       <Label layoutX="207.0" layoutY="36.0" prefHeight="90.0" prefWidth="166.0" text="Item Type Here">
