@@ -23,16 +23,9 @@ public class ShopModel {
 		        reader.close();
 		        
 		        // if needgive then read in whole hashmap else read in only items in stock
-		        if(type.equals("ng")) {
-			        for(String key: properties.stringPropertyNames()){
-			        	h.put(key, properties.get(key).toString());
-			        }	 
-		        } else {
-		        	for(String key: properties.stringPropertyNames()){
-			        	if(Integer.parseInt(properties.get(key).toString()) > 0) 
-			        		h.put(key, properties.get(key).toString());
-			        }
-		        }
+			    for(String key: properties.stringPropertyNames()){
+			    	h.put(key, properties.get(key).toString());
+			    }	 
 			}
 			catch(IOException e){
 				e.printStackTrace();
