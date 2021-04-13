@@ -49,16 +49,20 @@ public class ShopController implements Initializable{
     
     public void loadStock() {
     	for(Item i: stock) {
-	        String total = i.getName() + ":\t\t" + i.getQuantity();
-	        //System.out.println(total);
+    		String total = i.getName(); //+ ":\t\t" + i.getQuantity();  add if length < x amount add space until proper spacing
+	        if(total.length() < 50) {
+	        	for(int k = total.length(); k < 50; k++)
+	        		total += ' ';
+	        }
+	        total += i.getQuantity();
 	        shopList.getItems().add(total);
 	     }
     }
     
     public void printStock() {
     	for(Item i: stock) {
-	        String total = i.getName() + ":\t\t" + i.getQuantity(); // add if length < x amount add space until proper spacing
-	        System.out.println(total);
+	        
+	        //System.out.println(total);
 	     }
     }
     
