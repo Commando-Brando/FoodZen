@@ -42,23 +42,27 @@ public class ShopController implements Initializable{
     
     private ShopModel model;
     
+    // constructor initializes a ShopModel object and its stock as an ArrayList
     public ShopController() {
     	model = new ShopModel();
     	stock = model.getStock();
+    	
     }
     
+    // loadStock goes through the stock and loads the ListView from its Items
     public void loadStock() {
     	for(Item i: stock) {
-    		String total = i.getName(); //+ ":\t\t" + i.getQuantity();  add if length < x amount add space until proper spacing
-	        if(total.length() < 50) {
-	        	for(int k = total.length(); k < 50; k++)
-	        		total += ' ';
-	        }
+    		String total = i.getName();
+    		total = String.format("%-50s", total);
 	        total += i.getQuantity();
+	        total = String.format("%-70s", total);
+	        total += i.getPrice();
+	        //System.out.println(total);
 	        shopList.getItems().add(total);
 	     }
     }
     
+    // test method to print out the stock to stdout
     public void printStock() {
     	for(Item i: stock) {
 	        
@@ -66,17 +70,9 @@ public class ShopController implements Initializable{
 	     }
     }
     
+    // initialize loads base UI components and calls loadStock() to populate the ListView
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-    	
-	     // for each loop that makes strings out of the key value HashMap pairs and adds them to the ListView
     	loadStock();
-    	 /*for(Item i: stock) {
- 	        String total = i.getName() + ":\t\t" + i.getQuantity();
- 	        //System.out.println(total);
- 	        shopList.getItems().add(total);
- 	     }*/
-	        
-		  
 	}
 }
