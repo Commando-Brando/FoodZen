@@ -33,7 +33,7 @@ public class MainController implements Initializable{
     	System.out.println("hello");
     	launchActivity = FXMLLoader.load(getClass().getResource("../view/Shop.fxml"));
     	System.out.println("hello back");
-    	Scene scene = new Scene (launchActivity);
+    	Scene scene = new Scene (launchActivity,1200,800);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
