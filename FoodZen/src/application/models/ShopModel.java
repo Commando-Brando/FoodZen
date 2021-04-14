@@ -32,35 +32,35 @@ public class ShopModel {
 				// FileInputStreams for each properties file
 				FileInputStream qreader = new FileInputStream("src/application/properties/quantity.properties");	  
 				FileInputStream preader = new FileInputStream("src/application/properties/price.properties");
-				//FileInputStream creader = new FileInputStream("src/application/category.properties");
+				FileInputStream creader = new FileInputStream("src/application/category.properties");
 				
 				// initializes properties objects  
 		        p1 = new Properties();
 		        p2 = new Properties();
-		        //p3 = new Properties();
+		        p3 = new Properties();
 		        
 		        // loads properties objects with their respective files
 		        p1.load(qreader);
 		        p2.load(preader);
-		        //p3.load(creader);
+		        p3.load(creader);
 		        
 		        // close FileInputStream objects
 		        qreader.close();
 		        preader.close();
-		        //creader.close();
+		        creader.close();
 		        
 		        // initializes and populates HashMaps 
 		        this.quantities = populateHash(p1);
 				this.prices = populateHash(p2);
-				//this.categories = populateHash(p3);
+				this.categories = populateHash(p3);
 			    
 				// initializes and populates stock Item ArrayList
 				stock = new ArrayList<Item>();
 				populateStock("quantity", this.quantities);
 				populateStock("price", this.prices);
-				//populateStock("category", this.categories);
+				populateStock("category", this.categories);
 				
-				//printStock(); //print method to print out all stock (testing)
+				printStock(); //print method to print out all stock (testing)
 			    
 			}
 			catch(IOException e){
@@ -107,15 +107,18 @@ public class ShopModel {
 			        		this.stock.get(i).setPrice(pair.getValue());
 			        }
 				}
-			} /*else {
+			} else {
 				while (it.hasNext()) {
 			        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
 			        //System.out.println(pair.getKey() + " = " + pair.getValue());
-			        //it.remove(); // avoids a ConcurrentModificationException
+			        it.remove(); // avoids a ConcurrentModificationException
 			        Item newItem = new Item(pair.getKey(), pair.getValue());
-			        this.stock.add(newItem);
+			        for(int i = 0; i < this.stock.size(); i++) {
+			        	if(this.stock.get(i).getName().equals(pair.getKey()))
+			        		this.stock.get(i).setCategory(pair.getValue());
+			        }
 				}
-			}*/
+			}
 		}
 		
 		// prints out stdout the items in the stock ArrayList
