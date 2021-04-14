@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import application.Item;
 import application.models.ShopModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -38,21 +39,49 @@ public class ShopController implements Initializable{
     @FXML
     private Button dairyButton;
     
+    @FXML
+    private Button allButton;
+
+    
     private ArrayList<Item> stock;
     
     private ShopModel model;
     
+    @FXML
+    public void loadHelper(ActionEvent event) {
+    	if(event.getSource().toString().equals(allButton.toString())) {
+    		loadStock("all");
+    	} else if(event.getSource().toString().equals(produceButton.toString())) {
+    		loadStock("Produce");
+    	} else if(event.getSource().toString().equals(meatButton.toString())) {
+    		loadStock("Meat");
+    	} else if(event.getSource().toString().equals(dairyButton.toString())) {
+    		loadStock("Dairy");
+    	} else if(event.getSource().toString().equals(grainsButton.toString())) {
+    		loadStock("Grains");
+    	} else if(event.getSource().toString().equals(condimentsButton.toString())) {
+    		loadStock("Condiments");
+    	} else if(event.getSource().toString().equals(drinksButton.toString())) {
+    		loadStock("Drinks");
+    	} else if(event.getSource().toString().equals(snacksButton.toString())) {
+    		loadStock("Snacks");
+    	} 
+    }
     
     // loadStock goes through the stock and loads the ListView from its Items
-    public void loadStock() {
+    public void loadStock(String category) {
+    	shopList.getItems().clear();
     	for(Item i: stock) {
-    		String total = i.getName();
-    		total = String.format("%-50s", total);
-	        total += i.getQuantity();
-	        total = String.format("%-70s", total);
-	        total += i.getPrice();
-	        //System.out.println(total);
-	        shopList.getItems().add(total);
+    		//loadTester(i, category);
+    		if(category.equals("all") || i.getCategory().equals(category)) {
+	    		String total = i.getName();
+	    		total = String.format("%-50s", total);
+		        total += i.getQuantity();
+		        total = String.format("%-70s", total);
+		        total += i.getPrice();
+		        //System.out.println(total);
+		        shopList.getItems().add(total);
+    			}
 	     }
     }
     
@@ -69,6 +98,10 @@ public class ShopController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	model = new ShopModel();
     	stock = model.getStock();
-    	loadStock();
+    	loadStock("all");
 	}
+    
+    public void loadTester(Item i, String cat) {
+    	System.out.println(i.getName() + " " + i.getPrice() + " " + i.getQuantity() + " " + i.getCategory() + " " + cat);    
+    }
 }
