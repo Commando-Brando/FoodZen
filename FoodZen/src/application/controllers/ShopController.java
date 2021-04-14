@@ -42,12 +42,6 @@ public class ShopController implements Initializable{
     
     private ShopModel model;
     
-    // constructor initializes a ShopModel object and its stock as an ArrayList
-    public ShopController() {
-    	model = new ShopModel();
-    	stock = model.getStock();
-    	
-    }
     
     // loadStock goes through the stock and loads the ListView from its Items
     public void loadStock() {
@@ -73,6 +67,8 @@ public class ShopController implements Initializable{
     // initialize loads base UI components and calls loadStock() to populate the ListView
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+    	model = new ShopModel();
+    	stock = model.getStock();
     	loadStock();
 	}
 }
