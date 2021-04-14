@@ -25,15 +25,16 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <HBox alignment="TOP_CENTER" layoutX="7.0" layoutY="166.0" prefHeight="38.0" prefWidth="743.0" spacing="50.0">
+      <HBox alignment="TOP_CENTER" layoutX="7.0" layoutY="166.0" prefHeight="38.0" prefWidth="743.0" spacing="40.0">
          <children>
-            <Button fx:id="produceButton" mnemonicParsing="false" text="Produce" />
-            <Button fx:id="meatButton" mnemonicParsing="false" text="Meat" />
-            <Button fx:id="dairyButton" mnemonicParsing="false" text="Dairy" />
-            <Button fx:id="grainsButton" mnemonicParsing="false" text="Grains" />
-            <Button fx:id="condimentsButton" mnemonicParsing="false" text="Condiments" />
-            <Button fx:id="drinksButton" mnemonicParsing="false" text="Drinks" />
-            <Button fx:id="snacksButton" mnemonicParsing="false" text="Snacks" />
+            <Button fx:id="allButton" mnemonicParsing="false" onAction="#loadHelper" text="All" />
+            <Button fx:id="produceButton" mnemonicParsing="false" onAction="#loadHelper" text="Produce" />
+            <Button fx:id="meatButton" mnemonicParsing="false" onAction="#loadHelper" text="Meat" />
+            <Button fx:id="dairyButton" mnemonicParsing="false" onAction="#loadHelper" text="Dairy" />
+            <Button fx:id="grainsButton" mnemonicParsing="false" onAction="#loadHelper" text="Grains" />
+            <Button fx:id="condimentsButton" mnemonicParsing="false" onAction="#loadHelper" text="Condiments" />
+            <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#loadHelper" text="Drinks" />
+            <Button fx:id="snacksButton" mnemonicParsing="false" onAction="#loadHelper" text="Snacks" />
          </children>
       </HBox>
       <ListView fx:id="shopList" layoutX="14.0" layoutY="216.0" prefHeight="347.0" prefWidth="718.0" />

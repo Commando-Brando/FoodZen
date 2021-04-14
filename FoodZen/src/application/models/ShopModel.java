@@ -32,7 +32,7 @@ public class ShopModel {
 				// FileInputStreams for each properties file
 				FileInputStream qreader = new FileInputStream("src/application/properties/quantity.properties");	  
 				FileInputStream preader = new FileInputStream("src/application/properties/price.properties");
-				FileInputStream creader = new FileInputStream("src/application/category.properties");
+				FileInputStream creader = new FileInputStream("src/application/properties/category.properties");
 				
 				// initializes properties objects  
 		        p1 = new Properties();
@@ -124,7 +124,7 @@ public class ShopModel {
 		// prints out stdout the items in the stock ArrayList
 		public void printStock() {
 			for(Item i: this.stock) 
-				System.out.println(i.getName() + " " + i.getPrice() + " " + i.getQuantity());
+				System.out.println(i.getName() + " " + i.getPrice() + " " + i.getQuantity() + " " + i.getCategory());
 		}
 
 		
