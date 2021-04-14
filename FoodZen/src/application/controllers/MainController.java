@@ -14,7 +14,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 
-
 public class MainController implements Initializable{
 	
 	@FXML
@@ -32,7 +31,7 @@ public class MainController implements Initializable{
     @FXML
     void shopLaunch(ActionEvent event) throws IOException {
     	System.out.println("hello");
-    	launchActivity = FXMLLoader.load(getClass().getResource("src/application/ItemList.fxml"));
+    	launchActivity = FXMLLoader.load(getClass().getResource("../view/Shop.fxml"));
     	System.out.println("hello back");
     	Scene scene = new Scene (launchActivity);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
