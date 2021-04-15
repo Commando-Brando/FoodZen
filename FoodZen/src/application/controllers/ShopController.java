@@ -1,5 +1,6 @@
 package application.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,15 +12,22 @@ import application.Item;
 import application.models.ShopModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class ShopController implements Initializable{
 
+	@FXML
+    private AnchorPane mainActivity;
+	
     @FXML
     private Button grainsButton;
 
@@ -60,7 +68,13 @@ public class ShopController implements Initializable{
     private Label quantityLabel;
     
     @FXML
-    private AnchorPane mainAnchor;
+    private Button cancelButton;
+    
+    @FXML
+    private Button addButton;
+    
+    @FXML
+    private TextField cartAmountText;
 
     
     private ArrayList<Item> stock;
@@ -153,12 +167,20 @@ public class ShopController implements Initializable{
     
     
     public void setItemText(Item i) {
-    	String text = "Would you like to add " + i.getName() + "to your cart?";
+    	String text = "Would you like to add " + i.getName() + " to your cart?";
     	String amount = "There are only " + i.getQuantity() + " left!";
     	itemLabel.setText(text);
     	quantityLabel.setText(amount);
-    	popAnchor.setStyle("-fx-background-color: #ffffff");
     	//mainAnchor.setOpacity(25);
     	popAnchor.setVisible(true);
+    }
+    
+    @FXML
+    void goHome(ActionEvent event) throws Exception {
+    	mainActivity = FXMLLoader.load(getClass().getResource("../view/HomePage.fxml"));
+    	Scene scene = new Scene (mainActivity);
+    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Window.setScene(scene);
+    	Window.show();
     }
 }

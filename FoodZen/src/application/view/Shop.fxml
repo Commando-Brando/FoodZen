@@ -8,19 +8,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainAnchor" prefHeight="570.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ShopController">
+<AnchorPane fx:id="mainActivity" prefHeight="570.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ShopController">
    <children>
       <ImageView fitHeight="154.0" fitWidth="152.0" layoutX="20.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../graphics/foodZ.png" />
          </image>
       </ImageView>
-      <Label layoutX="186.0" layoutY="33.0" prefHeight="91.0" prefWidth="160.0" text="Shop">
+      <Label layoutX="208.0" layoutY="34.0" prefHeight="91.0" prefWidth="160.0" text="Shop">
          <font>
             <Font size="45.0" />
          </font>
       </Label>
-      <Button layoutX="645.0" layoutY="64.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="91.0" text="Home">
+      <Button layoutX="610.0" layoutY="510.0" mnemonicParsing="false" onAction="#goHome" prefHeight="46.0" prefWidth="91.0" text="Home">
          <font>
             <Font size="18.0" />
          </font>
@@ -35,19 +35,29 @@
             <Button fx:id="condimentsButton" mnemonicParsing="false" onAction="#loadHelper" text="Condiments" />
             <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#loadHelper" text="Drinks" />
             <Button fx:id="snacksButton" mnemonicParsing="false" onAction="#loadHelper" text="Snacks" />
+            <Label prefHeight="20.0" prefWidth="149.0" text="Users Cart:">
+               <font>
+                  <Font name="Comic Sans MS" size="20.0" />
+               </font>
+            </Label>
          </children>
       </HBox>
       <ListView fx:id="shopList" layoutX="6.0" layoutY="216.0" prefHeight="347.0" prefWidth="556.0" />
-      <Label layoutX="330.0" layoutY="68.0" prefHeight="38.0" prefWidth="354.0" text="Browse all our delicious food items here!">
+      <Label layoutX="347.0" layoutY="69.0" prefHeight="38.0" prefWidth="354.0" text="Browse all our delicious food items here!">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="popAnchor" layoutX="250.0" layoutY="216.0" prefHeight="227.0" prefWidth="312.0" visible="false">
+      <AnchorPane fx:id="popAnchor" layoutX="208.0" layoutY="174.0" prefHeight="257.0" prefWidth="354.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000;" visible="false">
          <children>
-            <Label fx:id="itemLabel" layoutX="23.0" layoutY="22.0" prefHeight="17.0" prefWidth="267.0" />
-            <Label fx:id="quantityLabel" layoutX="14.0" layoutY="39.0" prefHeight="17.0" prefWidth="285.0" />
+            <Label fx:id="itemLabel" layoutX="42.0" layoutY="22.0" prefHeight="17.0" prefWidth="258.0" />
+            <Label fx:id="quantityLabel" layoutX="108.0" layoutY="39.0" prefHeight="17.0" prefWidth="213.0" />
+            <Button fx:id="cancelButton" layoutX="71.0" layoutY="171.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="74.0" text="Cancel" />
+            <Button fx:id="addButton" layoutX="200.0" layoutY="171.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" text="Add" />
+            <TextField fx:id="cartAmountText" layoutX="103.0" layoutY="116.0" />
+            <Label layoutX="73.0" layoutY="84.0" text="Please enter how many would you like?" />
          </children>
       </AnchorPane>
+      <ListView layoutX="572.0" layoutY="215.0" prefHeight="286.0" prefWidth="167.0" />
    </children>
 </AnchorPane>
