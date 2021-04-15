@@ -126,7 +126,8 @@ public class ShopModel {
 			for(Item i: this.stock) 
 				System.out.println(i.getName() + " " + i.getPrice() + " " + i.getQuantity() + " " + i.getCategory());
 		}
-
+		
+		// getItem is a getter method for a specific item in the stock array by searching for it with a String name parameter 
 		public Item getItem(String name) {
 	    	for(Item i: this.stock)  
 	    		if(i.getName().equals(name))
