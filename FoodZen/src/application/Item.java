@@ -13,7 +13,13 @@ public class Item {
 	private String quantity;
 	private String price;
 	
-	// constructor for Brandons testing disregard
+	// constructor for setting just the name variable
+	public Item(String name) {
+		this.name = name;
+	}
+		
+		
+	// constructor for setting just name and quantity values
 	public Item(String name, String quantity) {
 		this.name = name;
 		this.quantity = quantity;
