@@ -76,7 +76,6 @@ public class ShopController implements Initializable{
     @FXML
     private TextField cartAmountText;
 
-    
     private ArrayList<Item> stock;
     
     private ShopModel model;
@@ -103,7 +102,6 @@ public class ShopController implements Initializable{
     		loadStock("Snacks");
     	} 
     }
-    
     
     // loadStock goes through the stock and loads the ListView from its Items via a category sent in as a String parameter
     public void loadStock(String category) {
@@ -139,11 +137,12 @@ public class ShopController implements Initializable{
     	model = new ShopModel();
     	stock = model.getStock();
     	loadStock("all");
+    	
+    	// anonymous class sets on set listener pop up the add to cart window and calls methods to populate window
     	shopList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
     	    @Override
     	    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-    	        // Your action here
     	    	Item k;
     	    	String arr[] = newValue.split("\\s+");
     	        System.out.println("Selected item: " + arr[0] + " " + arr[1]);
@@ -153,7 +152,6 @@ public class ShopController implements Initializable{
     	        	k = model.getItem(arr[0] + " " + arr[1]);
     	        }
     	        addToCart(k);
-    	        
     	    }
     	});
 	}
@@ -162,7 +160,6 @@ public class ShopController implements Initializable{
     public void loadTester(Item i, String cat) {
     	System.out.println(i.getName() + " " + i.getPrice() + " " + i.getQuantity() + " " + i.getCategory() + " " + cat);    
     }
-    
     
     // pops up add to cart pane and sets its UI components and calls model for back-end cart functionality. Takes in an item to be displayed
     public void addToCart(Item i) {
