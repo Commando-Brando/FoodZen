@@ -80,7 +80,6 @@ public class ShopController implements Initializable{
     
     private ShopModel model;
     
-    
     // loadHelper acts as a middle man to figure out which button was pressed and then call the loader with the button text
     @FXML
     public void loadHelper(ActionEvent event) {
