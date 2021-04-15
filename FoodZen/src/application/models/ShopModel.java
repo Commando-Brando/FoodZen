@@ -127,5 +127,11 @@ public class ShopModel {
 				System.out.println(i.getName() + " " + i.getPrice() + " " + i.getQuantity() + " " + i.getCategory());
 		}
 
-		
+		public Item getItem(String name) {
+	    	for(Item i: this.stock)  
+	    		if(i.getName().equals(name))
+	    			return i;
+	    	Item temp = new Item(name);
+	    	return temp;
+	    }
 }
