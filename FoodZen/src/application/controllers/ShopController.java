@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -33,7 +34,7 @@ public class ShopController implements Initializable{
 
     @FXML
     private Button condimentsButton;
-
+    
     @FXML
     private ListView<String> shopList;
 
@@ -75,10 +76,17 @@ public class ShopController implements Initializable{
     
     @FXML
     private TextField cartAmountText;
-
+    
+    @FXML
+    private ListView<String> cartList;
+    
     private ArrayList<Item> stock;
     
     private ShopModel model;
+    
+    String name;
+    
+    String price;
     
     // loadHelper acts as a middle man to figure out which button was pressed and then call the loader with the button text
     @FXML
@@ -133,9 +141,14 @@ public class ShopController implements Initializable{
      */
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-    	model = new ShopModel();
+    	try {
+			model = new ShopModel();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     	stock = model.getStock();
     	loadStock("all");
+    	loadCart();
     	
     	// anonymous class sets on set listener pop up the add to cart window and calls methods to populate window
     	shopList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -148,9 +161,9 @@ public class ShopController implements Initializable{
     	        if(arr.length == 3) {	
     	        	 k= model.getItem(arr[0]);
     	        } else {
-    	        	k = model.getItem(arr[0] + " " + arr[1]);
+    	        	 k = model.getItem(arr[0] + " " + arr[1]);
     	        }
-    	        addToCart(k);
+    	        cartMenu(k);
     	    }
     	});
 	}
@@ -161,7 +174,7 @@ public class ShopController implements Initializable{
     }
     
     // pops up add to cart pane and sets its UI components and calls model for back-end cart functionality. Takes in an item to be displayed
-    public void addToCart(Item i) {
+    public void cartMenu(Item i) {
     	String text = "Would you like to add " + i.getName() + " to your cart?";
     	String amount = "There are only " + i.getQuantity() + " left!";
     	itemLabel.setText(text);
@@ -178,5 +191,40 @@ public class ShopController implements Initializable{
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
+    }
+    
+    @FXML
+    void cancelMenu(ActionEvent event) {
+    	popAnchor.setVisible(false);
+    }
+
+    @FXML
+    void addToCart(ActionEvent event) throws Exception {
+    	String quantity = cartAmountText.getText().toString();
+    	cartAmountText.clear();
+    	String arr[] = itemLabel.getText().toString().split("\\s+");
+    	Item k;
+    	if(arr.length == 9) {	
+    		k = model.getItem(arr[5]);
+       } else {
+    	    k = model.getItem(arr[5] + " " + arr[6]);
+       }
+    	k.setQuantity(quantity);
+    	this.model.updateFiles(k);
+    	cartList.getItems().clear();
+    	loadCart();
+    	popAnchor.setVisible(false);
+    }
+    
+    private void loadCart() {
+    	HashMap<String, String> h = model.getCart();
+    	Iterator it = h.entrySet().iterator();
+    	while (it.hasNext()) {
+	        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
+	        it.remove(); // avoids a ConcurrentModificationException
+	        String s = pair.getKey() + " " + pair.getValue();
+	        System.out.println(pair.getKey() + "\t" + pair.getValue());
+	        cartList.getItems().add(s);
+    	}
     }
 }
