@@ -76,11 +76,9 @@ public class ShopController implements Initializable{
     @FXML
     private TextField cartAmountText;
 
-    
     private ArrayList<Item> stock;
     
     private ShopModel model;
-    
     
     // loadHelper acts as a middle man to figure out which button was pressed and then call the loader with the button text
     @FXML
@@ -102,11 +100,6 @@ public class ShopController implements Initializable{
     	} else if(event.getSource().toString().equals(snacksButton.toString())) {
     		loadStock("Snacks");
     	} 
-    }
-    
-    @FXML
-    void cartHandler(ActionEvent event) {
-    	//System.out.println("hello");
     }
     
     // loadStock goes through the stock and loads the ListView from its Items via a category sent in as a String parameter
@@ -134,17 +127,21 @@ public class ShopController implements Initializable{
 	     }
     }
     
-    // initialize loads base UI components and calls loadStock() to populate the ListView
+    /*
+     *  initialize loads base UI components and calls loadStock() to populate the ListView and instantiate the model class
+     *  it also sets an on click listener anonymous class on the list view which pops up an add to cart menu when clicked
+     */
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	model = new ShopModel();
     	stock = model.getStock();
     	loadStock("all");
+    	
+    	// anonymous class sets on set listener pop up the add to cart window and calls methods to populate window
     	shopList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
     	    @Override
     	    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-    	        // Your action here
     	    	Item k;
     	    	String arr[] = newValue.split("\\s+");
     	        System.out.println("Selected item: " + arr[0] + " " + arr[1]);
@@ -153,20 +150,18 @@ public class ShopController implements Initializable{
     	        } else {
     	        	k = model.getItem(arr[0] + " " + arr[1]);
     	        }
-    	        setItemText(k);
-    	        
+    	        addToCart(k);
     	    }
     	});
-    	
 	}
     
+    // testing method for stock items
     public void loadTester(Item i, String cat) {
     	System.out.println(i.getName() + " " + i.getPrice() + " " + i.getQuantity() + " " + i.getCategory() + " " + cat);    
     }
     
-    
-    
-    public void setItemText(Item i) {
+    // pops up add to cart pane and sets its UI components and calls model for back-end cart functionality. Takes in an item to be displayed
+    public void addToCart(Item i) {
     	String text = "Would you like to add " + i.getName() + " to your cart?";
     	String amount = "There are only " + i.getQuantity() + " left!";
     	itemLabel.setText(text);
@@ -175,6 +170,7 @@ public class ShopController implements Initializable{
     	popAnchor.setVisible(true);
     }
     
+    // takes in an ActionEvent after home button clicked. resets the pane to the home screen
     @FXML
     void goHome(ActionEvent event) throws Exception {
     	mainActivity = FXMLLoader.load(getClass().getResource("../view/HomePage.fxml"));
