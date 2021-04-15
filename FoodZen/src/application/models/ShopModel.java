@@ -2,10 +2,13 @@ package application.models;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
 import application.Item;
@@ -18,6 +21,7 @@ public class ShopModel {
 	private HashMap<String, String> quantities;
 	private HashMap<String, String> prices;
 	private HashMap<String, String> categories;
+	private HashMap<String, String> cart;
 	private Properties p1;
 	private Properties p2;
 	private Properties p3;
@@ -25,7 +29,7 @@ public class ShopModel {
 	private Iterator it;
 	
 	    // constructor opens files using FileinputStreams with properties objects. Function calls made to populate HashMaps and stock ArrayList
-		public ShopModel() {
+		public ShopModel() throws Exception {
 			
 			try {
 				
@@ -60,12 +64,23 @@ public class ShopModel {
 				populateStock("price", this.prices);
 				populateStock("category", this.categories);
 				
-				printStock(); //print method to print out all stock (testing)
+				readCart();
+				
+				//printStock(); //print method to print out all stock (testing)
 			    
 			}
 			catch(IOException e){
 				e.printStackTrace();
 			}        
+		}
+		
+		public void readCart() throws Exception {
+			FileInputStream cartReader = new FileInputStream("src/application/properties/cart.properties");
+			Properties p4 = new Properties();
+			p4.load(cartReader);
+			cartReader.close();
+			this.cart = populateHash(p4);
+			System.out.println("read in: " + this.cart);
 		}
 		
 		// getter method for the stock ArrayList
@@ -135,4 +150,26 @@ public class ShopModel {
 	    	Item temp = new Item(name);
 	    	return temp;
 	    }
+		
+		// updateFiles updates the cart properties file with any changes
+		public void updateFiles(Item i) throws Exception {
+			readCart();
+			FileOutputStream cartWriter = new FileOutputStream("src/application/properties/cart.properties");
+	        Properties p = new Properties();
+	        System.out.println("Before writing: " + this.cart);
+	        this.cart.put(i.getName(), i.getQuantity());
+	        System.out.println("Writing to file: " + this.cart);
+	        for(Map.Entry<String, String> entry: this.cart.entrySet()) {
+				p.put(entry.getKey(), entry.getValue());
+		        }
+	        p.store(cartWriter,null);
+	        cartWriter.close();
+		}
+		
+		
+		
+		
+		public HashMap<String, String> getCart(){
+			return this.cart;
+		}
 }
