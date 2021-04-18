@@ -15,14 +15,14 @@
             <Image url="@../graphics/foodZ.png" />
          </image>
       </ImageView>
-      <Label layoutX="208.0" layoutY="34.0" prefHeight="91.0" prefWidth="160.0" text="Shop">
+      <Label layoutX="172.0" layoutY="34.0" prefHeight="91.0" prefWidth="160.0" text="Shop">
          <font>
             <Font size="45.0" />
          </font>
       </Label>
-      <Button layoutX="610.0" layoutY="510.0" mnemonicParsing="false" onAction="#goHome" prefHeight="46.0" prefWidth="91.0" text="Home">
+      <Button layoutX="674.0" layoutY="544.0" mnemonicParsing="false" onAction="#goHome" prefHeight="38.0" prefWidth="80.0" text="Home">
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
          </font>
       </Button>
       <HBox alignment="CENTER_LEFT" layoutX="7.0" layoutY="166.0" prefHeight="38.0" prefWidth="743.0" spacing="20.0">
@@ -35,28 +35,55 @@
             <Button fx:id="condimentsButton" mnemonicParsing="false" onAction="#loadHelper" text="Condiments" />
             <Button fx:id="drinksButton" mnemonicParsing="false" onAction="#loadHelper" text="Drinks" />
             <Button fx:id="snacksButton" mnemonicParsing="false" onAction="#loadHelper" text="Snacks" />
-            <Label prefHeight="20.0" prefWidth="149.0" text="Users Cart:">
+            <Label prefHeight="20.0" prefWidth="149.0" text="Remaining: ">
                <font>
                   <Font name="Comic Sans MS" size="20.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <ListView fx:id="shopList" layoutX="6.0" layoutY="216.0" prefHeight="347.0" prefWidth="556.0" />
-      <Label layoutX="347.0" layoutY="69.0" prefHeight="38.0" prefWidth="354.0" text="Browse all our delicious food items here!">
+      <ListView fx:id="shopList" layoutY="223.0" prefHeight="347.0" prefWidth="556.0" />
+      <Label layoutX="284.0" layoutY="70.0" prefHeight="38.0" prefWidth="354.0" text="Browse all our delicious food items here!">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="popAnchor" layoutX="208.0" layoutY="174.0" prefHeight="257.0" prefWidth="354.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000;" visible="false">
+      <Label layoutX="262.0" layoutY="204.0" text="Price">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <Label layoutX="172.0" layoutY="204.0" text="Quantity">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <AnchorPane fx:id="popAnchor" layoutX="202.0" layoutY="131.0" prefHeight="257.0" prefWidth="354.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000;" visible="false">
          <children>
-            <Label fx:id="itemLabel" layoutX="54.0" layoutY="22.0" prefHeight="17.0" prefWidth="293.0" />
-            <Label fx:id="quantityLabel" layoutX="108.0" layoutY="39.0" prefHeight="17.0" prefWidth="213.0" />
+            <Label fx:id="itemLabel" layoutX="5.0" layoutY="45.0" prefHeight="17.0" prefWidth="344.0" />
+            <Label fx:id="quantityLabel" layoutX="83.0" layoutY="71.0" prefHeight="17.0" prefWidth="213.0" />
             <Button fx:id="cancelButton" layoutX="71.0" layoutY="171.0" mnemonicParsing="false" onAction="#cancelMenu" prefHeight="38.0" prefWidth="74.0" text="Cancel" />
             <Button fx:id="addButton" layoutX="200.0" layoutY="171.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="38.0" prefWidth="80.0" text="Add" />
             <TextField fx:id="cartAmountText" layoutX="103.0" layoutY="116.0" />
          </children>
       </AnchorPane>
-      <ListView fx:id="cartList" layoutX="572.0" layoutY="215.0" prefHeight="286.0" prefWidth="167.0" />
+      <ListView fx:id="cartList" layoutX="574.0" layoutY="245.0" prefHeight="286.0" prefWidth="180.0" />
+      <Label layoutX="8.0" layoutY="204.0" text="Item">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <Button fx:id="editCartButton" layoutX="574.0" layoutY="543.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="74.0" text="Edit Cart">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="574.0" layoutY="209.0" prefHeight="20.0" prefWidth="149.0" text="Cart:">
+         <font>
+            <Font name="Comic Sans MS" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="600.0" layoutY="56.0" prefHeight="20.0" prefWidth="149.0" text="Budget: ">
+         <font>
+            <Font name="Comic Sans MS" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
