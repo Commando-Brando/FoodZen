@@ -1,6 +1,8 @@
 package application.controllers;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,10 +19,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -80,6 +84,9 @@ public class ShopController implements Initializable{
     @FXML
     private ListView<String> cartList;
     
+    @FXML
+    private Button editCartButton;
+    
     private ArrayList<Item> stock;
     
     private ShopModel model;
@@ -108,23 +115,6 @@ public class ShopController implements Initializable{
     	} else if(event.getSource().toString().equals(snacksButton.toString())) {
     		loadStock("Snacks");
     	} 
-    }
-    
-    // loadStock goes through the stock and loads the ListView from its Items via a category sent in as a String parameter
-    public void loadStock(String category) {
-    	shopList.getItems().clear();
-    	for(Item i: stock) {
-    		//loadTester(i, category);
-    		if(category.equals("all") || i.getCategory().equals(category)) {
-	    		String total = i.getName();
-	    		total = String.format("%-50s", total);
-		        total += i.getQuantity();
-		        total = String.format("%-70s", total);
-		        total += i.getPrice();
-		        //System.out.println(total);
-		        shopList.getItems().add(total);
-    			}
-	     }
     }
     
     // test method to print out the stock to stdout
@@ -156,7 +146,7 @@ public class ShopController implements Initializable{
     	    @Override
     	    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
     	    	Item k;
-    	    	String arr[] = newValue.split("\\s+");
+    	    	String arr[] = newValue.split("\\s+"); // for some reason this throws an exception sometimes whenever the list is updated. Does not effect functionality
     	        System.out.println("Selected item: " + arr[0] + " " + arr[1]);
     	        if(arr.length == 3) {	
     	        	 k= model.getItem(arr[0]);
@@ -175,8 +165,8 @@ public class ShopController implements Initializable{
     
     // pops up add to cart pane and sets its UI components and calls model for back-end cart functionality. Takes in an item to be displayed
     public void cartMenu(Item i) {
-    	String text = "Would you like to add " + i.getName() + " to your cart?";
-    	String amount = "There are only " + i.getQuantity() + " left!";
+    	String text = "How many would you like to add " + i.getName() + " to your cart?";
+    	String amount = "There are only " + i.getQuantity() + " left! Price: " + i.getPrice();
     	itemLabel.setText(text);
     	quantityLabel.setText(amount);
     	//mainAnchor.setOpacity(25);
@@ -193,38 +183,68 @@ public class ShopController implements Initializable{
     	Window.show();
     }
     
+    // add to cart menu cancel button that hides the window 
     @FXML
     void cancelMenu(ActionEvent event) {
     	popAnchor.setVisible(false);
     }
-
+    
+    // performs basic UI logic and model calls to add an item to the cart. it refreshes the cart ListView by calling loadCart() and has the model update the cart.properties file
     @FXML
     void addToCart(ActionEvent event) throws Exception {
     	String quantity = cartAmountText.getText().toString();
     	cartAmountText.clear();
     	String arr[] = itemLabel.getText().toString().split("\\s+");
     	Item k;
-    	if(arr.length == 9) {	
-    		k = model.getItem(arr[5]);
+    	if(arr.length == 11) {	
+    		k = model.getItem(arr[7]);
        } else {
-    	    k = model.getItem(arr[5] + " " + arr[6]);
+    	    k = model.getItem(arr[7] + " " + arr[8]);
        }
-    	k.setQuantity(quantity);
-    	this.model.updateFiles(k);
-    	cartList.getItems().clear();
-    	loadCart();
+    	if(Integer.parseInt(quantity) > Integer.parseInt(k.getQuantity())) {
+    		Alert a = new Alert(AlertType.NONE);
+        	a.setAlertType(AlertType.ERROR);
+        	a.setContentText("Sorry we only have " + k.getQuantity() + " of " + k.getName() + " in stock");
+        	a.show();
+    	} else {
+	    	k.setQuantity(quantity);
+	    	this.model.updateFiles(k);
+	    	cartList.getItems().clear();
+	    	loadCart();
+    	}
     	popAnchor.setVisible(false);
     }
     
+    // refreshes the cart ListView with the proper cart values. it formats the strings to be added in the format, itemName, quantity, price
     private void loadCart() {
     	HashMap<String, String> h = model.getCart();
     	Iterator it = h.entrySet().iterator();
     	while (it.hasNext()) {
 	        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
 	        it.remove(); // avoids a ConcurrentModificationException
-	        String s = pair.getKey() + " " + pair.getValue();
-	        System.out.println(pair.getKey() + "\t" + pair.getValue());
+	        String s = pair.getKey(); //+ "       " + pair.getValue() + "      " + String.valueOf(BigDecimal.valueOf(Double.parseDouble(model.getItem(pair.getKey()).getPrice()) * Double.parseDouble(pair.getValue())).setScale(3, RoundingMode.HALF_UP).doubleValue());
+	        s = String.format("%-20s", s);
+	        s += pair.getValue();
+	        s = String.format("%-30s", s);
+	        s += String.valueOf(BigDecimal.valueOf(Double.parseDouble(model.getItem(pair.getKey()).getPrice()) * Double.parseDouble(pair.getValue())).setScale(3, RoundingMode.HALF_UP).doubleValue());
 	        cartList.getItems().add(s);
     	}
+    }
+    
+    // loadStock goes through the stock and loads the ListView from its Items via a category sent in as a String parameter
+    public void loadStock(String category) {
+    	shopList.getItems().clear();
+    	for(Item i: stock) {
+    		//loadTester(i, category);
+    		if(category.equals("all") || i.getCategory().equals(category)) {
+	    		String total = i.getName();
+	    		total = String.format("%-50s", total);
+		        total += i.getQuantity();
+		        total = String.format("%-70s", total);
+		        total += i.getPrice();
+		        //System.out.println(total);
+		        shopList.getItems().add(total);
+    			}
+	     }
     }
 }

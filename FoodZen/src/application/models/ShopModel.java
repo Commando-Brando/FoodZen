@@ -74,15 +74,6 @@ public class ShopModel {
 			}        
 		}
 		
-		public void readCart() throws Exception {
-			FileInputStream cartReader = new FileInputStream("src/application/properties/cart.properties");
-			Properties p4 = new Properties();
-			p4.load(cartReader);
-			cartReader.close();
-			this.cart = populateHash(p4);
-			System.out.println("read in: " + this.cart);
-		}
-		
 		// getter method for the stock ArrayList
 		public ArrayList<Item> getStock(){
 			return this.stock;
@@ -151,6 +142,17 @@ public class ShopModel {
 	    	return temp;
 	    }
 		
+		// method is void and takes in no parameters. it reads the cart properties file and populates the cart hashmap with the data
+		// functionally this is used to to help refresh the cart UI every time the user adds/removes from the cart 
+		public void readCart() throws Exception {
+			FileInputStream cartReader = new FileInputStream("src/application/properties/cart.properties");
+			Properties p4 = new Properties();
+			p4.load(cartReader);
+			cartReader.close();
+			this.cart = populateHash(p4);
+			System.out.println("read in: " + this.cart);
+		}
+				
 		// updateFiles updates the cart properties file with any changes
 		public void updateFiles(Item i) throws Exception {
 			readCart();
@@ -168,7 +170,7 @@ public class ShopModel {
 		
 		
 		
-		
+		// getter method for the cart hashmap, used by controller to get cart values to display on UI
 		public HashMap<String, String> getCart(){
 			return this.cart;
 		}
