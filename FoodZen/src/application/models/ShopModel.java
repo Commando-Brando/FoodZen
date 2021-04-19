@@ -15,9 +15,6 @@ import application.Item;
 
 public class ShopModel {
 	
-	private File priceFile;
-	private File quantityFile;
-	private File categoryFile;
 	private HashMap<String, String> quantities;
 	private HashMap<String, String> prices;
 	private HashMap<String, String> categories;
@@ -26,7 +23,6 @@ public class ShopModel {
 	private Properties p2;
 	private Properties p3;
 	private ArrayList<Item> stock;
-	private Iterator it;
 	
 	    // constructor opens files using FileinputStreams with properties objects. Function calls made to populate HashMaps and stock ArrayList
 		public ShopModel() throws Exception {
