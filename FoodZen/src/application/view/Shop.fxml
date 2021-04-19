@@ -70,7 +70,7 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <Button fx:id="editCartButton" layoutX="574.0" layoutY="543.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="74.0" text="Edit Cart">
+      <Button fx:id="editCartButton" layoutX="574.0" layoutY="543.0" mnemonicParsing="false" onAction="#showMenu" prefHeight="39.0" prefWidth="74.0" text="Edit Cart">
          <font>
             <Font size="14.0" />
          </font>
@@ -85,5 +85,28 @@
             <Font name="Comic Sans MS" size="20.0" />
          </font>
       </Label>
+      <AnchorPane fx:id="popAnchor2" layoutX="212.0" layoutY="141.0" prefHeight="257.0" prefWidth="354.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000;" visible="false">
+         <children>
+            <TextField fx:id="cartAmountText2" layoutX="99.0" layoutY="131.0" promptText="type quantity here" />
+            <HBox alignment="CENTER" layoutX="-4.0" layoutY="159.0" prefHeight="100.0" prefWidth="354.0" spacing="50.0">
+               <children>
+                  <Button fx:id="addItemText" mnemonicParsing="false" onAction="#addToCart" prefHeight="42.0" prefWidth="70.0" text="add" />
+                  <Button fx:id="clearItemText" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" text="clear all" />
+                  <Button fx:id="subtractItemText" mnemonicParsing="false" prefHeight="42.0" prefWidth="70.0" text="subtract" />
+               </children>
+            </HBox>
+            <TextField fx:id="cartItemText" layoutX="99.0" layoutY="90.0" promptText="type item here" />
+            <Label layoutX="26.0" layoutY="45.0" prefHeight="17.0" prefWidth="314.0" text="please enter and item name and quantity to be changed" />
+            <Button layoutX="288.0" layoutY="14.0" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../graphics/Sale.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

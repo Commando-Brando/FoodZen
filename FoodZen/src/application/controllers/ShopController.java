@@ -33,6 +33,9 @@ public class ShopController implements Initializable{
 	@FXML
     private AnchorPane mainActivity;
 	
+	@FXML
+    private AnchorPane popAnchor2;
+	
     @FXML
     private Button grainsButton;
 
@@ -82,7 +85,22 @@ public class ShopController implements Initializable{
     private TextField cartAmountText;
     
     @FXML
+    private TextField cartItemText;
+    
+    @FXML
+    private TextField cartAmountText2;
+    
+    @FXML
     private ListView<String> cartList;
+    
+    @FXML
+    private Button addItemText;
+    
+    @FXML
+    private Button clearItemText;
+    
+    @FXML
+    private Button subtractItemText;
     
     @FXML
     private Button editCartButton;
@@ -158,6 +176,11 @@ public class ShopController implements Initializable{
     	});
 	}
     
+    @FXML
+    public void showMenu(ActionEvent event) {
+    	popAnchor2.setVisible(true);
+    }
+    
     // testing method for stock items
     public void loadTester(Item i, String cat) {
     	System.out.println(i.getName() + " " + i.getPrice() + " " + i.getQuantity() + " " + i.getCategory() + " " + cat);    
@@ -192,15 +215,26 @@ public class ShopController implements Initializable{
     // performs basic UI logic and model calls to add an item to the cart. it refreshes the cart ListView by calling loadCart() and has the model update the cart.properties file
     @FXML
     void addToCart(ActionEvent event) throws Exception {
-    	String quantity = cartAmountText.getText().toString();
-    	cartAmountText.clear();
-    	String arr[] = itemLabel.getText().toString().split("\\s+");
+    	String quantity;
     	Item k;
-    	if(arr.length == 11) {	
-    		k = model.getItem(arr[7]);
-       } else {
-    	    k = model.getItem(arr[7] + " " + arr[8]);
-       }
+    	
+    	if(event.getSource().equals(addButton)) {
+	    	quantity = cartAmountText.getText().toString();
+	    	cartAmountText.clear();
+	    	String arr[] = itemLabel.getText().toString().split("\\s+");
+	    	if(arr.length == 11) {	
+	    		k = model.getItem(arr[7]);
+	       } else {
+	    	    k = model.getItem(arr[7] + " " + arr[8]);
+	       }
+	    	popAnchor.setVisible(false);
+    	} else {
+    		String name = cartItemText.getText().toString();
+    		quantity = cartAmountText2.getText().toString();
+    		k = new Item(name, quantity);
+    		popAnchor2.setVisible(false);
+    	}
+    	
     	if(Integer.parseInt(quantity) > Integer.parseInt(k.getQuantity())) {
     		Alert a = new Alert(AlertType.NONE);
         	a.setAlertType(AlertType.ERROR);
@@ -212,7 +246,7 @@ public class ShopController implements Initializable{
 	    	cartList.getItems().clear();
 	    	loadCart();
     	}
-    	popAnchor.setVisible(false);
+    	
     }
     
     // refreshes the cart ListView with the proper cart values. it formats the strings to be added in the format, itemName, quantity, price
