@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="587.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="587.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="169.0" fitWidth="175.0" layoutX="29.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@graphics/foodZ.png" />
+            <Image url="@../graphics/foodZ.png" />
          </image>
       </ImageView>
       <Label layoutX="207.0" layoutY="36.0" prefHeight="90.0" prefWidth="166.0" text="Item Type Here">
@@ -21,7 +21,7 @@
       </Label>
       <ImageView fitHeight="297.0" fitWidth="598.0" layoutX="29.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../graphics/itemlist.png" />
+            <Image url="@../graphics/itemlist.png" />
          </image></ImageView>
       <Button layoutX="373.0" layoutY="492.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="220.0" text="Add to Cart">
          <font>
