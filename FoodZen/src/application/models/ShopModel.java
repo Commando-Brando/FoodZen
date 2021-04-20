@@ -134,7 +134,7 @@ public class ShopModel {
 	    	for(Item i: this.stock)  
 	    		if(i.getName().equals(name))
 	    			return i;
-	    	Item temp = new Item(name);
+	    	Item temp = null;
 	    	return temp;
 	    }
 		
@@ -152,22 +152,61 @@ public class ShopModel {
 		// updateFiles updates the cart properties file with any changes
 		public void updateFiles(Item i) throws Exception {
 			readCart();
+			int total;
 			FileOutputStream cartWriter = new FileOutputStream("src/application/properties/cart.properties");
 	        Properties p = new Properties();
 	        System.out.println("Before writing: " + this.cart);
-	        this.cart.put(i.getName(), i.getQuantity());
+	        if(i.getCategory().equals("subtract")) {
+	        	if(i.getQuantity().equals("0")) {
+	        		this.cart.remove(i.getName());
+	        	} else {
+	        		this.cart.put(i.getName(), i.getQuantity());
+	        	}
+	        } else {
+	        	if(this.cart.containsKey(i.getName())) {
+	        		total = Integer.parseInt(this.cart.get(i.getName())) + Integer.parseInt(i.getQuantity());
+	        		this.cart.put(i.getName(), String.valueOf(total));
+	        	} else {
+	        		this.cart.put(i.getName(), i.getQuantity());
+	        	}
+	        }
 	        System.out.println("Writing to file: " + this.cart);
 	        for(Map.Entry<String, String> entry: this.cart.entrySet()) {
 				p.put(entry.getKey(), entry.getValue());
 		        }
 	        p.store(cartWriter,null);
 	        cartWriter.close();
+	        readCart();
 		}
-		
-		
 		
 		// getter method for the cart hashmap, used by controller to get cart values to display on UI
 		public HashMap<String, String> getCart(){
 			return this.cart;
+		}
+		
+		// takes in an item name and quantity and checks the cart HashMap to see if item is currently in cart and if so how many will be remaining
+		public int removeItem(String item, String num) throws Exception {
+			readCart();
+			int amount = Integer.parseInt(num);
+			Item k = getItem(item);
+			if(k == null) { // if null no item exists in the cart
+				return -1;
+			} else if(Integer.parseInt(this.cart.get(item)) - amount <= 0) { // remove item because quantity is 0
+				this.cart.remove(item);
+				return 0;
+			} else {
+				return Integer.parseInt(this.cart.get(item)) - amount; // returns remaining quantity
+			}
+		}
+		
+		
+		// boolean method checks the stock to see if item exists based on a item name parameter
+		public boolean checkStock(String name) {
+			boolean b = false;
+			for(Item i: this.stock) {
+				if(i.getName().equals(name))
+					b = true;
+			}
+			return b;
 		}
 }

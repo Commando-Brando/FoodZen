@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="603.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="158.0" fitWidth="201.0" layoutX="38.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../graphics/foodZ.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="230.0" layoutY="46.0" prefHeight="68.0" prefWidth="110.0" text="Cart">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <Label layoutX="494.0" layoutY="93.0" prefHeight="39.0" prefWidth="228.0" text="Your Items:">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="545.0" layoutY="166.0" prefHeight="36.0" prefWidth="86.0" text="Item 1">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="545.0" layoutY="210.0" prefHeight="36.0" prefWidth="86.0" text="Item 1">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="545.0" layoutY="346.0" prefHeight="36.0" prefWidth="86.0" text="Item 1">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="545.0" layoutY="302.0" prefHeight="36.0" prefWidth="86.0" text="Item 1">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="545.0" layoutY="256.0" prefHeight="36.0" prefWidth="86.0" text="Item 1">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="494.0" layoutY="394.0" prefHeight="36.0" prefWidth="188.0" text="SubTotal: ####">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="494.0" layoutY="430.0" prefHeight="36.0" prefWidth="188.0" text="Tax:          ####">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="494.0" layoutY="464.0" prefHeight="36.0" prefWidth="188.0" text="Total:       ####">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="166.0" fitWidth="254.0" layoutX="38.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../graphics/Recommendations.png" />
+         </image></ImageView>
+      <ImageView fitHeight="138.0" fitWidth="254.0" layoutX="38.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../graphics/Recommendations.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="483.0" layoutY="506.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="210.0" text="Proceed to Payment">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="60.0" layoutY="506.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="210.0" text="Return to Shop">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

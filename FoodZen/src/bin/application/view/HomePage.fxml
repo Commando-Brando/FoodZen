@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="launchActivity" prefHeight="656.0" prefWidth="956.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
+   <children>
+      <Label layoutX="253.0" layoutY="60.0" prefHeight="89.0" prefWidth="205.0" text="Foodzen">
+         <font>
+            <Font size="47.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="205.0" fitWidth="211.0" layoutX="33.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@graphics/foodZ.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="601.0" layoutY="82.0" text="Cart">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="682.0" layoutY="82.0" text="Account">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="329.0" fitWidth="307.0" layoutX="33.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@graphics/about%20us.png" />
+         </image></ImageView>
+      <ImageView fitHeight="150.0" fitWidth="486.0" layoutX="403.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@graphics/Recipe.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="107.0" fitWidth="486.0" layoutX="403.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@graphics/Sale.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="107.0" fitWidth="486.0" layoutX="403.0" layoutY="498.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@graphics/Monthly.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="812.0" layoutY="82.0" prefHeight="32.0" prefWidth="130.0" text="Contact ">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="shopButton" layoutX="478.0" layoutY="86.0" mnemonicParsing="false" onAction="#shopLaunch" prefHeight="33.0" prefWidth="87.0" text="Shop" wrapText="true">
+         <font>
+            <Font name="Comic Sans MS Bold" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
