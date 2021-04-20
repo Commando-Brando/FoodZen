@@ -38,6 +38,15 @@ public class ShopController implements Initializable{
 	
     @FXML
     private Button grainsButton;
+    
+    @FXML
+    private Button exitButton;
+    
+    @FXML
+    private Button clearButton;
+    
+    @FXML
+    private Button subtractButton;
 
     @FXML
     private Button condimentsButton;
@@ -176,6 +185,7 @@ public class ShopController implements Initializable{
     	});
 	}
     
+    // method shows the edit cart menu once the edit cart button is pressed
     @FXML
     public void showMenu(ActionEvent event) {
     	popAnchor2.setVisible(true);
@@ -218,33 +228,48 @@ public class ShopController implements Initializable{
     	String quantity;
     	Item k;
     	
-    	if(event.getSource().equals(addButton)) {
-	    	quantity = cartAmountText.getText().toString();
-	    	cartAmountText.clear();
-	    	String arr[] = itemLabel.getText().toString().split("\\s+");
-	    	if(arr.length == 11) {	
-	    		k = model.getItem(arr[7]);
-	       } else {
-	    	    k = model.getItem(arr[7] + " " + arr[8]);
-	       }
-	    	popAnchor.setVisible(false);
-    	} else {
-    		String name = cartItemText.getText().toString();
-    		quantity = cartAmountText2.getText().toString();
-    		k = new Item(name, quantity);
-    		popAnchor2.setVisible(false);
-    	}
-    	
-    	if(Integer.parseInt(quantity) > Integer.parseInt(k.getQuantity())) {
+    	if(this.model.checkStock(cartItemText.getText().toString()) == false) {
     		Alert a = new Alert(AlertType.NONE);
         	a.setAlertType(AlertType.ERROR);
-        	a.setContentText("Sorry we only have " + k.getQuantity() + " of " + k.getName() + " in stock");
+        	a.setContentText("Sorry " + cartItemText.getText().toString() + " is not in stock");
         	a.show();
     	} else {
-	    	k.setQuantity(quantity);
-	    	this.model.updateFiles(k);
-	    	cartList.getItems().clear();
-	    	loadCart();
+	    	if(event.getSource().equals(addButton)) {
+		    	quantity = cartAmountText.getText().toString();
+		    	cartAmountText.clear();
+		    	String arr[] = itemLabel.getText().toString().split("\\s+");
+		    	if(arr.length == 11) {	
+		    		k = model.getItem(arr[7]);
+		       } else {
+		    	    k = model.getItem(arr[7] + " " + arr[8]);
+		       }
+		    	popAnchor.setVisible(false);
+	    	} else {
+	    		if(cartAmountText2.getText().toString().equals("") || cartItemText.getText().toString().equals("")) {
+	        		Alert a = new Alert(AlertType.NONE);
+	            	a.setAlertType(AlertType.ERROR);
+	            	a.setContentText("Error please enter an amount");
+	            	a.show();
+	            	return;
+	        	}
+	    		String name = cartItemText.getText().toString();
+	    		quantity = cartAmountText2.getText().toString();
+	    		k = new Item(name, quantity);
+	    		popAnchor2.setVisible(false);
+	    	}
+	    	
+	    	if(Integer.parseInt(quantity) > Integer.parseInt(k.getQuantity())) {
+	    		Alert a = new Alert(AlertType.NONE);
+	        	a.setAlertType(AlertType.ERROR);
+	        	a.setContentText("Sorry we only have " + k.getQuantity() + " of " + k.getName() + " in stock");
+	        	a.show();
+	    	} else {
+		    	k.setQuantity(quantity);
+		    	k.setCategory("add");
+		    	this.model.updateFiles(k);
+		    	cartList.getItems().clear();
+		    	loadCart();
+	    	}
     	}
     	
     }
@@ -280,5 +305,66 @@ public class ShopController implements Initializable{
 		        shopList.getItems().add(total);
     			}
 	     }
+    }
+    
+    /*  called if the user clicks the "clear all" or "subtract" button in the edit cart window
+     *  used retrieves UI data, validates data, and sends data to model to write and reload the cart ListView
+     */
+    
+    @FXML
+    public void subCart(ActionEvent event) throws Exception{
+    	// gets the text field data
+    	String item = cartItemText.getText().toString();
+    	String amount = cartAmountText2.getText().toString();
+    	
+    	// checks to see if either field is empty and sends alert if so
+    	if(amount.equals("") || item.equals("")) {
+    		Alert a = new Alert(AlertType.NONE);
+        	a.setAlertType(AlertType.ERROR);
+        	a.setContentText("Error please fill in both text fields");
+        	a.show();
+        	return;
+    	}
+    	
+    	// initialize item k because compiler doesnt like it only in if statements
+    	Item k = new Item("filler");
+    	
+    	// if user hit sub button then call the model to process the data
+    	if(event.getSource() == subtractButton) {
+    		int i = this.model.removeItem(item, amount);
+    		if(i == -1) { // - 1 means the item was not in cart so send alert and return
+    			Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText(item = " is not currently in your cart");
+            	a.show();
+            	return;
+    		} else if(i == 0) { // 0 means after subtracting the item quantity in cart reached 0
+    			k = new Item(item, "0");
+    		} else { // else we have some quantity left 
+    			k = new Item(item, String.valueOf(i));
+    		}
+    	} else { // this is for the clear all button whichs checks to see if item in cart first and then sends a 0'd out item var
+    		if(this.model.getItem(item) != null) {
+    			k = new Item(item, "0");
+    		} else { // if item not in cart send alert
+    			Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText(item = " is not currently in your cart");
+            	a.show();
+            	return;
+    		}
+    	}
+    	
+    	// below we set category to subtract for the model method and call the model to update the file. Then we reload the cart ListView
+    	k.setCategory("subtract");
+		this.model.updateFiles(k);
+		cartList.getItems().clear();
+    	loadCart();
+	}
+    
+    // onAction method for the red X button on the top right of the edit cart window
+    @FXML
+    public void closeMenu(ActionEvent event) {
+    	popAnchor2.setVisible(false);
     }
 }
