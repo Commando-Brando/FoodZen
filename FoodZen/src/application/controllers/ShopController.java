@@ -180,7 +180,7 @@ public class ShopController implements Initializable{
     	        } else {
     	        	 k = model.getItem(arr[0] + " " + arr[1]);
     	        }
-    	        cartMenu(k);
+    	        cartMenu(k); // launch onClick cart menu
     	    }
     	});
 	}
@@ -199,10 +199,9 @@ public class ShopController implements Initializable{
     // pops up add to cart pane and sets its UI components and calls model for back-end cart functionality. Takes in an item to be displayed
     public void cartMenu(Item i) {
     	String text = "How many would you like to add " + i.getName() + " to your cart?";
-    	String amount = "There are only " + i.getQuantity() + " left! Price: " + i.getPrice();
+    	String amount = "We have " + i.getQuantity() + " in total. Price: " + i.getPrice();
     	itemLabel.setText(text);
     	quantityLabel.setText(amount);
-    	//mainAnchor.setOpacity(25);
     	popAnchor.setVisible(true);
     }
     
@@ -226,52 +225,67 @@ public class ShopController implements Initializable{
     @FXML
     void addToCart(ActionEvent event) throws Exception {
     	String quantity;
+    	String name;
     	Item k;
+    	Item t;
     	
-    	if(this.model.checkStock(cartItemText.getText().toString()) == false) {
+    	// if onClick listener ListView addButton then proceed else it is add from editCart menu
+    	if(event.getSource().equals(addButton)) {
+	    	quantity = cartAmountText.getText().toString();
+	    	cartAmountText.clear();
+	    	
+	    	// string array checks to see if the item is 1 or 2 words and gets an item back accordingly
+	    	String arr[] = itemLabel.getText().toString().split("\\s+");
+	    	if(arr.length == 11) {	
+	    		name = arr[7];
+	    		k = model.getItem(name);
+	       } else {
+	    	   name = arr[7] + " " + arr[8];
+	    	    k = model.getItem(name);
+	       }
+	    	popAnchor.setVisible(false);
+    	} else { // else the edit cart menu add button was clicked. Immediately check to see if either text fields are empty if so return and send alert
+    		if(cartAmountText2.getText().toString().equals("") || cartItemText.getText().toString().equals("")) {
+        		Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText("Error please enter an amount");
+            	a.show();
+            	return;
+        	}
+    		
+    		// checks to see if the item requested is in the stock else send alert that item does not exist
+    		if(this.model.checkStock(cartItemText.getText().toString()) == false) {
+        		Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText("Sorry " + cartItemText.getText().toString() + " is not in stock");
+            	a.show();
+        	}
+    		
+    		name = cartItemText.getText().toString();
+    		quantity = cartAmountText2.getText().toString();
+    		k = new Item(name, quantity);
+    		popAnchor2.setVisible(false);
+    	}
+    	int check;
+    	
+    	// Instantiate temp Item to hold data otherwise it causes errors manipulating k in the model
+    	t = new Item(name);
+    	t.setQuantity(quantity);
+    	t.setCategory("add");
+    	
+    	// check calls model.updateFiles sening t in and if returns -1 the user requested more than available send alert and return
+    	check = this.model.updateFiles(t);
+    	if(check == -1) {
     		Alert a = new Alert(AlertType.NONE);
         	a.setAlertType(AlertType.ERROR);
-        	a.setContentText("Sorry " + cartItemText.getText().toString() + " is not in stock");
+        	a.setContentText("Sorry there are no more " + name + " left in stock");
         	a.show();
-    	} else {
-	    	if(event.getSource().equals(addButton)) {
-		    	quantity = cartAmountText.getText().toString();
-		    	cartAmountText.clear();
-		    	String arr[] = itemLabel.getText().toString().split("\\s+");
-		    	if(arr.length == 11) {	
-		    		k = model.getItem(arr[7]);
-		       } else {
-		    	    k = model.getItem(arr[7] + " " + arr[8]);
-		       }
-		    	popAnchor.setVisible(false);
-	    	} else {
-	    		if(cartAmountText2.getText().toString().equals("") || cartItemText.getText().toString().equals("")) {
-	        		Alert a = new Alert(AlertType.NONE);
-	            	a.setAlertType(AlertType.ERROR);
-	            	a.setContentText("Error please enter an amount");
-	            	a.show();
-	            	return;
-	        	}
-	    		String name = cartItemText.getText().toString();
-	    		quantity = cartAmountText2.getText().toString();
-	    		k = new Item(name, quantity);
-	    		popAnchor2.setVisible(false);
-	    	}
-	    	
-	    	if(Integer.parseInt(quantity) > Integer.parseInt(k.getQuantity())) {
-	    		Alert a = new Alert(AlertType.NONE);
-	        	a.setAlertType(AlertType.ERROR);
-	        	a.setContentText("Sorry we only have " + k.getQuantity() + " of " + k.getName() + " in stock");
-	        	a.show();
-	    	} else {
-		    	k.setQuantity(quantity);
-		    	k.setCategory("add");
-		    	this.model.updateFiles(k);
-		    	cartList.getItems().clear();
-		    	loadCart();
-	    	}
+        	return;
     	}
     	
+    	// refreshes cart ListView for UI
+    	cartList.getItems().clear();
+    	loadCart();
     }
     
     // refreshes the cart ListView with the proper cart values. it formats the strings to be added in the format, itemName, quantity, price
@@ -281,7 +295,7 @@ public class ShopController implements Initializable{
     	while (it.hasNext()) {
 	        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
 	        it.remove(); // avoids a ConcurrentModificationException
-	        String s = pair.getKey(); //+ "       " + pair.getValue() + "      " + String.valueOf(BigDecimal.valueOf(Double.parseDouble(model.getItem(pair.getKey()).getPrice()) * Double.parseDouble(pair.getValue())).setScale(3, RoundingMode.HALF_UP).doubleValue());
+	        String s = pair.getKey(); 
 	        s = String.format("%-20s", s);
 	        s += pair.getValue();
 	        s = String.format("%-30s", s);
@@ -317,20 +331,19 @@ public class ShopController implements Initializable{
     	String item = cartItemText.getText().toString();
     	String amount = cartAmountText2.getText().toString();
     	
-    	// checks to see if either field is empty and sends alert if so
-    	if(amount.equals("") || item.equals("")) {
-    		Alert a = new Alert(AlertType.NONE);
-        	a.setAlertType(AlertType.ERROR);
-        	a.setContentText("Error please fill in both text fields");
-        	a.show();
-        	return;
-    	}
-    	
-    	// initialize item k because compiler doesnt like it only in if statements
+    	// initialize item k because compiler doesn't like it only in if statements
     	Item k = new Item("filler");
     	
     	// if user hit sub button then call the model to process the data
     	if(event.getSource() == subtractButton) {
+    		// checks to see if either field is empty and sends alert if so
+        	if(amount.equals("") || item.equals("")) {
+        		Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText("Error please fill in both text fields");
+            	a.show();
+            	return;
+        	}
     		int i = this.model.removeItem(item, amount);
     		if(i == -1) { // - 1 means the item was not in cart so send alert and return
     			Alert a = new Alert(AlertType.NONE);
@@ -343,7 +356,15 @@ public class ShopController implements Initializable{
     		} else { // else we have some quantity left 
     			k = new Item(item, String.valueOf(i));
     		}
-    	} else { // this is for the clear all button whichs checks to see if item in cart first and then sends a 0'd out item var
+    	} else { // this is for the clear all button which checks to see if item in cart first and then sends a 0'd out item var
+    		// checks to see if the item text field is empty
+        	if(item.equals("")) {
+        		Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText("Error please fill in the item name field");
+            	a.show();
+            	return;
+        	}
     		if(this.model.getItem(item) != null) {
     			k = new Item(item, "0");
     		} else { // if item not in cart send alert
