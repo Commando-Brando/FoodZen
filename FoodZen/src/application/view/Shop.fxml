@@ -15,7 +15,7 @@
             <Image url="@../graphics/foodZ.png" />
          </image>
       </ImageView>
-      <Label layoutX="172.0" layoutY="34.0" prefHeight="91.0" prefWidth="160.0" text="Shop">
+      <Label layoutX="182.0" layoutY="34.0" prefHeight="91.0" prefWidth="160.0" text="Shop">
          <font>
             <Font size="45.0" />
          </font>
@@ -43,7 +43,7 @@
          </children>
       </HBox>
       <ListView fx:id="shopList" layoutY="223.0" prefHeight="347.0" prefWidth="556.0" />
-      <Label layoutX="284.0" layoutY="70.0" prefHeight="38.0" prefWidth="354.0" text="Browse all our delicious food items here!">
+      <Label layoutX="182.0" layoutY="106.0" prefHeight="38.0" prefWidth="354.0" text="Browse all our delicious food items here!">
          <font>
             <Font size="17.0" />
          </font>
@@ -65,7 +65,7 @@
             <TextField fx:id="cartAmountText" layoutX="103.0" layoutY="116.0" />
          </children>
       </AnchorPane>
-      <ListView fx:id="cartList" layoutX="574.0" layoutY="245.0" prefHeight="286.0" prefWidth="180.0" />
+      <ListView fx:id="cartList" layoutX="574.0" layoutY="243.0" prefHeight="288.0" prefWidth="180.0" />
       <Label layoutX="8.0" layoutY="204.0" text="Item">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -75,12 +75,12 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="574.0" layoutY="209.0" prefHeight="20.0" prefWidth="149.0" text="Cart:">
+      <Label layoutX="574.0" layoutY="200.0" prefHeight="20.0" prefWidth="149.0" text="Cart:">
          <font>
             <Font name="Comic Sans MS" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="600.0" layoutY="56.0" prefHeight="20.0" prefWidth="149.0" text="Budget: ">
+      <Label layoutX="574.0" layoutY="140.0" prefHeight="20.0" prefWidth="149.0" text="Budget: ">
          <font>
             <Font name="Comic Sans MS" size="20.0" />
          </font>
@@ -108,5 +108,19 @@
             </Button>
          </children>
       </AnchorPane>
+      <Label layoutX="612.0" layoutY="24.0" prefHeight="17.0" prefWidth="92.0" text="On a budget?">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="574.0" layoutY="44.0" prefHeight="19.0" prefWidth="167.0" text="Click below to set a budget">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="621.0" layoutY="67.0" mnemonicParsing="false" text="Set Budget" />
+      <Label layoutX="574.0" layoutY="228.0" text="Item" />
+      <Label layoutX="641.0" layoutY="228.0" text="Quantity" />
+      <Label layoutX="701.0" layoutY="228.0" text="Price" />
    </children>
 </AnchorPane>
