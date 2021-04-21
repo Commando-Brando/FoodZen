@@ -149,13 +149,14 @@ public class ShopModel {
 			System.out.println("read in: " + this.cart);
 		}
 				
-		// updateFiles updates the cart properties file with any changes
-		public void updateFiles(Item i) throws Exception {
+		// updateFiles updates the cart properties file with any changes. Takes in an Item to be added and returns -1 if user asked for too much or 0 for success
+		public int updateFiles(Item i) throws Exception {
 			readCart();
 			int total;
-			FileOutputStream cartWriter = new FileOutputStream("src/application/properties/cart.properties");
-	        Properties p = new Properties();
+			
 	        System.out.println("Before writing: " + this.cart);
+	        
+	        // checks to see if the category is subtract for subtract cart file writing else performs addition logic
 	        if(i.getCategory().equals("subtract")) {
 	        	if(i.getQuantity().equals("0")) {
 	        		this.cart.remove(i.getName());
@@ -163,13 +164,27 @@ public class ShopModel {
 	        		this.cart.put(i.getName(), i.getQuantity());
 	        	}
 	        } else {
+	        	// checks to see if cart already has item else add it fresh
 	        	if(this.cart.containsKey(i.getName())) {
+	        		// total represents current amount in cart plus new amount requested
 	        		total = Integer.parseInt(this.cart.get(i.getName())) + Integer.parseInt(i.getQuantity());
+	        		// checks to see if total is higher than the actual stock amount and returns -1 if so otherwise adds to cart HashMap
+	        		if(total > Integer.parseInt(this.getItem(i.getName()).getQuantity())) { 
+	        			return -1;
+	        		}
 	        		this.cart.put(i.getName(), String.valueOf(total));
 	        	} else {
+	        		// checks to see if user requested amount is more than we have in stock and returns -1 if so otherwise adds to cart HashMap
+	        		if( Integer.parseInt(i.getQuantity()) > Integer.parseInt(this.getItem(i.getName()).getQuantity())) {
+	        			return -1;
+	        		}
 	        		this.cart.put(i.getName(), i.getQuantity());
 	        	}
 	        }
+	        
+	        // uses a output stream, properties file, and cart HashMap to write the cart to the properties file
+	        FileOutputStream cartWriter = new FileOutputStream("src/application/properties/cart.properties");
+	        Properties p = new Properties();
 	        System.out.println("Writing to file: " + this.cart);
 	        for(Map.Entry<String, String> entry: this.cart.entrySet()) {
 				p.put(entry.getKey(), entry.getValue());
@@ -177,6 +192,7 @@ public class ShopModel {
 	        p.store(cartWriter,null);
 	        cartWriter.close();
 	        readCart();
+	        return 0;
 		}
 		
 		// getter method for the cart hashmap, used by controller to get cart values to display on UI
