@@ -31,6 +31,15 @@ public class MainController implements Initializable{
 	@FXML
 	private Button contactButton;
 	
+	@FXML
+	private Button recipeOfTheWeek;
+	
+	@FXML
+	private Button saleOfTheWeek;
+	
+	@FXML
+	private Button newMonthlyItems;
+	
 	// initialize initializes base UI elements
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
