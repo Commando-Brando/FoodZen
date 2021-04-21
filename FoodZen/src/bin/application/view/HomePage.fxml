@@ -55,16 +55,16 @@
          <font>
             <Font name="Comic Sans MS Bold" size="30.0" />
          </font></Button>
-      <Button layoutX="565.0" layoutY="86.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="87.0" text="Cart">
+      <Button fx:id="cartButton" layoutX="565.0" layoutY="86.0" mnemonicParsing="false" onAction="#cartLaunch" prefHeight="33.0" prefWidth="87.0" text="Cart">
          <font>
             <Font name="Comic Sans MS Bold" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="652.0" layoutY="86.0" mnemonicParsing="false" text="Account">
+      <Button fx:id="accountButton" layoutX="652.0" layoutY="86.0" mnemonicParsing="false" text="Account">
          <font>
             <Font name="Comic Sans MS Bold" size="20.0" />
          </font></Button>
-      <Button layoutX="756.0" layoutY="86.0" mnemonicParsing="false" text="Contact">
+      <Button fx:id="contactButton" layoutX="756.0" layoutY="86.0" mnemonicParsing="false" text="Contact">
          <font>
             <Font name="Comic Sans MS Bold" size="20.0" />
          </font>

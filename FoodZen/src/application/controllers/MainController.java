@@ -54,4 +54,22 @@ public class MainController implements Initializable{
     	Window.setScene(scene);
     	Window.show();
     }
+    
+    @FXML
+    void accountLaunch(ActionEvent event) throws Exception {
+    	launchActivity = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
+    	Scene scene = new Scene (launchActivity,800,600);
+    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Window.setScene(scene);
+    	Window.show();
+    }
+    
+    @FXML
+    void contactLaunch(ActionEvent event) throws Exception {
+    	launchActivity = FXMLLoader.load(getClass().getResource("../view/Contact.fxml"));
+    	Scene scene = new Scene (launchActivity,800,600);
+    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Window.setScene(scene);
+    	Window.show();
+    }
 }
