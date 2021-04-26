@@ -28,15 +28,15 @@
             <Font name="Comic Sans MS Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="recipeOfTheWeek" layoutX="478.0" layoutY="244.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="368.0" text="Recipe of the Week">
+      <Button fx:id="recipeOfTheWeek" layoutX="478.0" layoutY="244.0" mnemonicParsing="false" onAction="#recipeAlert" prefHeight="25.0" prefWidth="368.0" text="Recipe of the Week">
          <font>
             <Font name="Comic Sans MS Bold" size="30.0" />
          </font></Button>
-      <Button fx:id="newMonthlyItems" layoutX="478.0" layoutY="501.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="368.0" text="New Monthly Items">
+      <Button fx:id="newMonthlyItems" layoutX="478.0" layoutY="501.0" mnemonicParsing="false" onAction="#newItems" prefHeight="25.0" prefWidth="368.0" text="New Monthly Items">
          <font>
             <Font name="Comic Sans MS Bold" size="30.0" />
          </font></Button>
-      <Button fx:id="saleOfTheWeek" layoutX="478.0" layoutY="373.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="368.0" text="Sale of the Week">
+      <Button fx:id="saleOfTheWeek" layoutX="478.0" layoutY="373.0" mnemonicParsing="false" onAction="#saleAlert" prefHeight="25.0" prefWidth="368.0" text="Sale of the Week">
          <font>
             <Font name="Comic Sans MS Bold" size="30.0" />
          </font></Button>
@@ -44,11 +44,11 @@
          <font>
             <Font name="Comic Sans MS Bold" size="20.0" />
          </font></Button>
-      <Button fx:id="accountButton" layoutX="652.0" layoutY="86.0" mnemonicParsing="false" onAction="#accountLaunch" text="Account">
+      <Button fx:id="accountButton" layoutX="652.0" layoutY="86.0" mnemonicParsing="false" text="Account">
          <font>
             <Font name="Comic Sans MS Bold" size="20.0" />
          </font></Button>
-      <Button fx:id="contactButton" layoutX="756.0" layoutY="86.0" mnemonicParsing="false" onAction="#contactLaunch" text="Contact">
+      <Button fx:id="contactButton" layoutX="756.0" layoutY="86.0" mnemonicParsing="false" onAction="#contactMe" text="Contact">
          <font>
             <Font name="Comic Sans MS Bold" size="20.0" />
          </font></Button>
