@@ -29,17 +29,17 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="494.0" layoutY="394.0" prefHeight="36.0" prefWidth="188.0" text="SubTotal: ####">
+      <Label fx:id="subTotalLabel" layoutX="494.0" layoutY="394.0" prefHeight="36.0" prefWidth="188.0" text="SubTotal: ####">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="494.0" layoutY="430.0" prefHeight="36.0" prefWidth="188.0" text="Tax:          ####">
+      <Label fx:id="taxLabel" layoutX="494.0" layoutY="430.0" prefHeight="36.0" prefWidth="188.0" text="Tax:          ####">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="494.0" layoutY="464.0" prefHeight="36.0" prefWidth="188.0" text="Total:       ####">
+      <Label fx:id="totalLabel" layoutX="494.0" layoutY="464.0" prefHeight="36.0" prefWidth="188.0" text="Total:       ####">
          <font>
             <Font size="25.0" />
          </font>
@@ -63,6 +63,6 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <ListView fx:id="cartList" layoutX="383.0" layoutY="114.0" prefHeight="265.0" prefWidth="409.0" />
+      <ListView fx:id="cartList" layoutX="465.0" layoutY="114.0" prefHeight="265.0" prefWidth="228.0" />
    </children>
 </AnchorPane>

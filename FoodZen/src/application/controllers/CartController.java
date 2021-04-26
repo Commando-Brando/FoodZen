@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -30,6 +31,13 @@ public class CartController implements Initializable{
 	private ShopModel modelCart;
 	@FXML
 	private ListView<String> cartList;
+	@FXML
+	private Label subTotalLabel;
+	@FXML
+	private Label taxLabel;
+	@FXML
+	private Label totalLabel;
+	
 	 
 	// takes in an ActionEvent after home button clicked. resets the pane to the home screen
     @FXML
@@ -52,27 +60,37 @@ public class CartController implements Initializable{
 			e.printStackTrace();
 			System.out.println("try was not successful");
 		}
-    	loadCart();
+    	loadCartNTotal();
 	}
     
     // refreshes the cart ListView with the proper cart values. it formats the strings to be added in the format, itemName, quantity, price
-    private void loadCart() {
+    private void loadCartNTotal() {
     	HashMap<String, String> h = modelCart.getCart();
     	Iterator it = h.entrySet().iterator();
+    	double subTotal = 0.0;
+    	double salesTax = 0.0075;
     	while (it.hasNext()) {
 	        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
 	        it.remove(); // avoids a ConcurrentModificationException
-	        String s = pair.getKey();
-	        System.out.println("This is key " + s + ".");
+	        // key = item name
+	        String s = pair.getKey(); 
+	        // number of spaces
 	        s = String.format("%-20s", s);
-	        System.out.println("This is key + String format " + s + ".");
-	        s += pair.getValue();
-	        System.out.println("This is key + String format + getValue " + s + ".");
-	        s = String.format("%-30s", s);
-	        System.out.println("This is key + String format + getValue + String format " + s + ".");
+	        // value = quantity of item
+	        s += pair.getValue(); 
+	        // number of spaces
+	        s = String.format("%-30s", s); 
+	        // valueOf = price of item
 	        s += String.valueOf(BigDecimal.valueOf(Double.parseDouble(modelCart.getItem(pair.getKey()).getPrice()) * Double.parseDouble(pair.getValue())).setScale(3, RoundingMode.HALF_UP).doubleValue());
-	        System.out.println("This is key + String format + getValue + String format + valueOf " + s + ".");
 	        cartList.getItems().add(s);
+	        // add subTotal
+	        subTotal += (BigDecimal.valueOf(Double.parseDouble(modelCart.getItem(pair.getKey()).getPrice()) * Double.parseDouble(pair.getValue())).setScale(3, RoundingMode.HALF_UP).doubleValue());
     	}
+    	// Set text value for subTotal, tax, and Total
+    	subTotalLabel.setText("SubTotal:  " + (String.valueOf(subTotal)));
+    	double tax = (subTotal * salesTax);
+    	taxLabel.setText("Tax:  " + String.format("%.2f", tax));
+    	double total = tax + subTotal;
+    	totalLabel.setText("Total:  " + String.format("%.2f", total));
     }
 }
