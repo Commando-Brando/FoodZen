@@ -24,36 +24,36 @@
             <Font size="45.0" />
          </font>
       </Label>
-      <Label layoutX="494.0" layoutY="59.0" prefHeight="39.0" prefWidth="228.0" text="Your Items:">
+      <Label contentDisplay="CENTER" layoutX="577.0" layoutY="125.0" prefHeight="43.0" prefWidth="161.0" text="Your Items:">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <Label fx:id="subTotalLabel" layoutX="494.0" layoutY="394.0" prefHeight="36.0" prefWidth="188.0" text="SubTotal: ####">
+      <Label fx:id="subTotalLabel" layoutX="564.0" layoutY="384.0" prefHeight="36.0" prefWidth="188.0" text="SubTotal: ####">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="taxLabel" layoutX="494.0" layoutY="430.0" prefHeight="36.0" prefWidth="188.0" text="Tax:          ####">
+      <Label fx:id="taxLabel" layoutX="564.0" layoutY="420.0" prefHeight="36.0" prefWidth="188.0" text="Tax:          ####">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="totalLabel" layoutX="494.0" layoutY="464.0" prefHeight="36.0" prefWidth="188.0" text="Total:       ####">
+      <Label fx:id="totalLabel" layoutX="564.0" layoutY="454.0" prefHeight="36.0" prefWidth="188.0" text="Total:       ####">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="166.0" fitWidth="254.0" layoutX="38.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="135.0" fitWidth="210.0" layoutX="38.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../graphics/Recommendations.png" />
          </image></ImageView>
-      <ImageView fitHeight="138.0" fitWidth="254.0" layoutX="38.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="135.0" fitWidth="210.0" layoutX="38.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../graphics/Recommendations.png" />
          </image>
       </ImageView>
-      <Button layoutX="483.0" layoutY="506.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="210.0" text="Proceed to Payment">
+      <Button layoutX="553.0" layoutY="506.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="210.0" text="Proceed to Payment">
          <font>
             <Font size="20.0" />
          </font>
@@ -63,6 +63,26 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <ListView fx:id="cartList" layoutX="465.0" layoutY="114.0" prefHeight="265.0" prefWidth="228.0" />
+      <ListView fx:id="cartList" layoutX="543.0" layoutY="189.0" prefHeight="195.0" prefWidth="228.0" />
+      <Label layoutX="337.0" layoutY="125.0" text="Edit Cart">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="280.0" layoutY="184.0" text="Item">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="278.0" layoutY="276.0" text="Quantity">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cartItemText" layoutX="280.0" layoutY="225.0" prefHeight="39.0" prefWidth="236.0" />
+      <TextField fx:id="cartQuantityText" layoutX="280.0" layoutY="321.0" prefHeight="39.0" prefWidth="236.0" />
+      <Button fx:id="addButton" layoutX="266.0" layoutY="379.0" mnemonicParsing="false" onAction="#addToCart" text="   add   " />
+      <Button fx:id="clearAllButton" layoutX="350.0" layoutY="379.0" mnemonicParsing="false" onAction="#subCart" text="clear all" />
+      <Button fx:id="subtractButton" layoutX="436.0" layoutY="379.0" mnemonicParsing="false" onAction="#subCart" text="subtract" />
    </children>
 </AnchorPane>
