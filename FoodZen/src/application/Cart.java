@@ -21,7 +21,7 @@ public class Cart {
 	
 	// subtracts item to cart by adding item to ArrayList
 	public void removeItem() {
-		
+		 
 	}
 	
 	// adds item to cart by adding item to ArrayList
