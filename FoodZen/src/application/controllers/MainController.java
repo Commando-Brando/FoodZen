@@ -17,10 +17,11 @@ import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 
 public class MainController implements Initializable{
-	
+	// AnchorPane
 	@FXML
     private AnchorPane launchActivity;
 	
+	// Buttons
 	@FXML
     private Button shopButton;
 	
@@ -72,22 +73,12 @@ public class MainController implements Initializable{
     @FXML
     void accountLaunch(ActionEvent event) throws Exception {
     	launchActivity = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
-    	Scene scene = new Scene (launchActivity,800,600);
+    	Scene scene = new Scene (launchActivity,500,300);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
     }
-    
-    //Launches Contact scene
-    @FXML
-    void contactLaunch(ActionEvent event) throws Exception {
-    	launchActivity = FXMLLoader.load(getClass().getResource("../view/Contact.fxml"));
-    	Scene scene = new Scene (launchActivity,800,600);
-    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    	Window.setScene(scene);
-    	Window.show();
-    }
-    
+     
 	// Alert to provide Recipe of the Week news
 	public void recipeAlert(ActionEvent event) {
 		Alert ROTW = new Alert(AlertType.CONFIRMATION,
@@ -100,7 +91,7 @@ public class MainController implements Initializable{
 	// Alert to provide Sale of the Week news
 	public void saleAlert(ActionEvent event) {
 		Alert SOTW = new Alert(AlertType.CONFIRMATION,
-				"Don't miss out on this week's sale!\n\n$3 off total when spending $50 or more\n\nAvocado 2 for $1\n\n2 for $5 on all soda\n");
+				"Don't miss out on this week's sale!\n\n$3 off total when spending $50 or more\n\nAvocado 2 for $1\n\n2 for $5 on all soda\n\n$10 coupon for all new members of Foodzen!\n");
 		SOTW.setTitle("Sale of the Week");
 		SOTW.setHeaderText("On sale this week!!");
 		SOTW.show();
