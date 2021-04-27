@@ -225,4 +225,23 @@ public class ShopModel {
 			}
 			return b;
 		}
+		
+		// adds up the total of all the items in the cart and then returns the total as a double 
+		public double getTotal() {
+			// try block calls readCart() to refresh cart HashMap with updated data
+			try {
+				readCart();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			// initializes total to 0 and then iterates through the HashMap to get the items and adds to total quantity multiplied by price
+			double total = 0;
+			Iterator it = this.cart.entrySet().iterator(); 
+			while (it.hasNext()) {
+		        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
+		        Item newItem = getItem(pair.getKey());
+		        total += Double.parseDouble(pair.getValue()) * Double.parseDouble(newItem.getPrice());
+			}
+			return total;
+		}
 }
