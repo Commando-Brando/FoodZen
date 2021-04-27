@@ -36,6 +36,9 @@ public class ShopController implements Initializable{
 	@FXML
     private AnchorPane popAnchor2;
 	
+	@FXML
+    private AnchorPane budgetPane;
+	
     @FXML
     private Button grainsButton;
     
@@ -85,7 +88,16 @@ public class ShopController implements Initializable{
     private Label quantityLabel;
     
     @FXML
+    private Label budgetLabel;
+    
+    @FXML
+    private Label totalLabel;
+    
+    @FXML
     private Button cancelButton;
+    
+    @FXML
+    private Button setBudgetButton;
     
     @FXML
     private Button addButton;
@@ -114,9 +126,23 @@ public class ShopController implements Initializable{
     @FXML
     private Button editCartButton;
     
+    @FXML
+    private TextField budgetText;
+    
+    @FXML
+    private Button budgetCancelButton;
+    
+    @FXML
+    private Button confirmBudgetButton;
+    
+    @FXML
+    private Button clearBudgetButton;
+    
     private ArrayList<Item> stock;
     
     private ShopModel model;
+    
+    private boolean set;
     
     String name;
     
@@ -144,6 +170,19 @@ public class ShopController implements Initializable{
     	} 
     }
     
+    @FXML
+    public void processBudget(ActionEvent event) {
+    	if(event.getSource() == confirmBudgetButton) {
+    		budgetLabel.setText("Budget: " + budgetText.getText().toString());
+    		this.set = true;
+    	} else {
+    		budgetLabel.setText("Budget: No Limit");
+    		this.set = false;
+    	}
+    	budgetText.clear();
+    	budgetPane.setVisible(false);
+    }
+    
     // test method to print out the stock to stdout
     public void printStock() {
     	for(Item i: stock) {
@@ -158,6 +197,7 @@ public class ShopController implements Initializable{
      */
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+    	this.set = false;
     	try {
 			model = new ShopModel();
 		} catch (Exception e) {
@@ -188,7 +228,10 @@ public class ShopController implements Initializable{
     // method shows the edit cart menu once the edit cart button is pressed
     @FXML
     public void showMenu(ActionEvent event) {
-    	popAnchor2.setVisible(true);
+    	if(event.getSource() == setBudgetButton) 
+    		budgetPane.setVisible(true);
+    	else 
+    		popAnchor2.setVisible(true);
     }
     
     // testing method for stock items
@@ -218,7 +261,12 @@ public class ShopController implements Initializable{
     // add to cart menu cancel button that hides the window 
     @FXML
     void cancelMenu(ActionEvent event) {
-    	popAnchor.setVisible(false);
+    	if(event.getSource() == budgetCancelButton)
+    		budgetPane.setVisible(false);
+    	else if(event.getSource() == cancelButton)
+    		popAnchor.setVisible(false);
+    	else
+    		popAnchor2.setVisible(false);
     }
     
     // performs basic UI logic and model calls to add an item to the cart. it refreshes the cart ListView by calling loadCart() and has the model update the cart.properties file
@@ -290,6 +338,7 @@ public class ShopController implements Initializable{
     
     // refreshes the cart ListView with the proper cart values. it formats the strings to be added in the format, itemName, quantity, price
     private void loadCart() {
+    	totalLabel.setText("SubTotal: " + String.valueOf(this.model.getTotal()));
     	HashMap<String, String> h = model.getCart();
     	Iterator it = h.entrySet().iterator();
     	while (it.hasNext()) {
@@ -383,9 +432,7 @@ public class ShopController implements Initializable{
     	loadCart();
 	}
     
-    // onAction method for the red X button on the top right of the edit cart window
-    @FXML
-    public void closeMenu(ActionEvent event) {
-    	popAnchor2.setVisible(false);
-    }
+   
+    
+    
 }
