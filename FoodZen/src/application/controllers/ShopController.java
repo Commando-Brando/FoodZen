@@ -185,7 +185,16 @@ public class ShopController implements Initializable{
     	if(event.getSource() == confirmBudgetButton) {
     		this.budget = budgetText.getText().toString();
     		
-    		// checks to see if budget being set is less than the current total
+    		// error trap to see if user enter a budget less than 0
+    		if(Double.parseDouble(this.budget) < 0) {
+    			Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText("It is impossible to have a negative budget please select one greater than 0");
+            	a.show();
+            	return;
+    		}
+    		
+    		// error trap to see if budget being set is less than the current total
     		if(Double.parseDouble(this.budget) < this.model.getTotal()) {
     			Alert a = new Alert(AlertType.NONE);
             	a.setAlertType(AlertType.ERROR);
@@ -196,11 +205,13 @@ public class ShopController implements Initializable{
     		budgetLabel.setText("Budget: $" + this.budget);
     		this.set = true;
     	} else {
+    		this.budget = "No Limit";
     		budgetLabel.setText("Budget: No Limit");
     		this.set = false;
     	}
     	budgetText.clear();
     	budgetPane.setVisible(false);
+    	this.model.setBudget(this.budget);
     }
     
     // test method to print out the stock to stdout
@@ -218,6 +229,7 @@ public class ShopController implements Initializable{
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	this.set = false;
+    	
     	try {
 			model = new ShopModel();
 		} catch (Exception e) {
@@ -226,6 +238,13 @@ public class ShopController implements Initializable{
     	stock = model.getStock();
     	loadStock("all");
     	loadCart();
+    	
+    	// calls model to retrieve the previous budget set by user if there is one
+    	this.budget = this.model.readBudget();
+    	if(!this.budget.equals("No Limit")) {
+    		this.set = true;
+    		budgetLabel.setText("Budget: $" + this.budget);
+    	}
     	
     	// anonymous class sets on set listener pop up the add to cart window and calls methods to populate window
     	shopList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -297,8 +316,6 @@ public class ShopController implements Initializable{
     	Item k;
     	Item t;
     	
-    	
-    	
     	// if onClick listener ListView addButton then proceed else it is add from editCart menu
     	if(event.getSource().equals(addButton)) {
 	    	quantity = cartAmountText.getText().toString();
@@ -333,7 +350,7 @@ public class ShopController implements Initializable{
     		
     		name = cartItemText.getText().toString();
     		quantity = cartAmountText2.getText().toString();
-    		k = new Item(name, quantity);
+    		k = this.model.getItem(name);
     		popAnchor2.setVisible(false);
     	}
     	int check;
@@ -341,6 +358,7 @@ public class ShopController implements Initializable{
     	// Instantiate temp Item to hold data otherwise it causes errors manipulating k in the model
     	t = new Item(name);
     	t.setQuantity(quantity);
+    	t.setPrice(k.getPrice());
     	t.setCategory("add");
     	
     	// checks to see if items being added exceeds budget
@@ -371,6 +389,7 @@ public class ShopController implements Initializable{
     
     // refreshes the cart ListView with the proper cart values. it formats the strings to be added in the format, itemName, quantity, price
     private void loadCart() {
+    	double temp;
     	totalLabel.setText("SubTotal: $" + String.valueOf(this.model.getTotal()));
     	HashMap<String, String> h = model.getCart();
     	Iterator it = h.entrySet().iterator();
@@ -381,7 +400,8 @@ public class ShopController implements Initializable{
 	        s = String.format("%-20s", s);
 	        s += pair.getValue();
 	        s = String.format("%-30s", s);
-	        s += String.valueOf(BigDecimal.valueOf(Double.parseDouble(model.getItem(pair.getKey()).getPrice()) * Double.parseDouble(pair.getValue())).setScale(3, RoundingMode.HALF_UP).doubleValue());
+	        temp = Double.parseDouble(model.getItem(pair.getKey()).getPrice()) * Double.parseDouble(pair.getValue());
+	        s += "$" + String.format("%.2f", temp);
 	        cartList.getItems().add(s);
     	}
     }
@@ -396,7 +416,7 @@ public class ShopController implements Initializable{
 	    		total = String.format("%-50s", total);
 		        total += i.getQuantity();
 		        total = String.format("%-70s", total);
-		        total += i.getPrice();
+		        total += "$" + i.getPrice();
 		        //System.out.println(total);
 		        shopList.getItems().add(total);
     			}
@@ -464,8 +484,4 @@ public class ShopController implements Initializable{
 		cartList.getItems().clear();
     	loadCart();
 	}
-    
-   
-    
-    
 }

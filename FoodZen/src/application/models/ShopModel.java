@@ -1,9 +1,13 @@
 package application.models;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -132,8 +136,11 @@ public class ShopModel {
 		// getItem is a getter method for a specific item in the stock array by searching for it with a String name parameter 
 		public Item getItem(String name) {
 	    	for(Item i: this.stock)  
-	    		if(i.getName().equals(name))
+	    		if(i.getName().equals(name)) {
+	    			System.out.println("Get Item Price: " + i.getPrice());
+	    			System.out.println("Get Item Price: " + i.getName());
 	    			return i;
+	    		}
 	    	Item temp = null;
 	    	return temp;
 	    }
@@ -243,5 +250,31 @@ public class ShopModel {
 		        total += Double.parseDouble(pair.getValue()) * Double.parseDouble(newItem.getPrice());
 			}
 			return total;
+		}
+		
+		// if the user sets budget this method writes the budget to budget.txt so it is remembered on their next session
+		public void setBudget(String budget) {
+			try {
+				FileWriter fw = new FileWriter("src/application/budget.txt");
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write(budget);
+				bw.close();
+				fw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// at the start of the controller initialize method this is called to read in a budget if one was previously set
+		public String readBudget() {
+			String budget = "No Limit";
+			try {
+				FileReader fr = new FileReader("src/application/budget.txt");
+				BufferedReader br = new BufferedReader(fr);
+				budget = br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return budget;
 		}
 }

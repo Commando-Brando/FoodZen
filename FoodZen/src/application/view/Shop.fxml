@@ -81,7 +81,7 @@
             <HBox alignment="CENTER" layoutX="-4.0" layoutY="159.0" prefHeight="100.0" prefWidth="354.0" spacing="50.0">
                <children>
                   <Button fx:id="addItemText" mnemonicParsing="false" onAction="#addToCart" prefHeight="42.0" prefWidth="70.0" text="add" />
-                  <Button fx:id="clearButton" mnemonicParsing="false" onAction="#subCart" prefHeight="42.0" prefWidth="70.0" text="clear all" />
+                  <Button fx:id="clearButton" mnemonicParsing="false" onAction="#subCart" prefHeight="42.0" prefWidth="83.0" text="remove item" />
                   <Button fx:id="subtractButton" mnemonicParsing="false" onAction="#subCart" prefHeight="42.0" prefWidth="70.0" text="subtract" />
                </children>
             </HBox>
