@@ -183,6 +183,16 @@ public class ShopController implements Initializable{
     public void processBudget(ActionEvent event) {
     	// if else checks which button was pressed
     	if(event.getSource() == confirmBudgetButton) {
+    		
+    		// error trap user hitting confirm button without inputting a number
+    		if(budgetText.getText().toString().equals("")) {
+    			Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText("No budget entered please enter a number greater than 0");
+            	a.show();
+            	return;
+    		}
+    		
     		this.budget = budgetText.getText().toString();
     		
     		// error trap to see if user enter a budget less than 0
