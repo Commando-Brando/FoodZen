@@ -393,7 +393,8 @@ public class ShopController implements Initializable{
     // refreshes the cart ListView with the proper cart values. it formats the strings to be added in the format, itemName, quantity, price
     private void loadCart() {
     	double temp;
-    	totalLabel.setText("SubTotal: $" + String.valueOf(this.model.getTotal()));
+    	String total = String.format("%.2f", this.model.getTotal());
+    	totalLabel.setText("Total with tax: $" + total);
     	HashMap<String, String> h = model.getCart();
     	Iterator it = h.entrySet().iterator();
     	while (it.hasNext()) {
