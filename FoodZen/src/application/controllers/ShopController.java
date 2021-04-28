@@ -152,6 +152,8 @@ public class ShopController implements Initializable{
     
     String name;
     
+    String budget;
+    
     String price;
     
     // loadHelper acts as a middle man to figure out which button was pressed and then call the loader with the button text
@@ -181,7 +183,17 @@ public class ShopController implements Initializable{
     public void processBudget(ActionEvent event) {
     	// if else checks which button was pressed
     	if(event.getSource() == confirmBudgetButton) {
-    		budgetLabel.setText("Budget: " + budgetText.getText().toString());
+    		this.budget = budgetText.getText().toString();
+    		
+    		// checks to see if budget being set is less than the current total
+    		if(Double.parseDouble(this.budget) < this.model.getTotal()) {
+    			Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText("Current total exceeds desired budget.\nPlease remove items in cart to match\ndesired budget or set a higher budget.");
+            	a.show();
+            	return;
+    		}
+    		budgetLabel.setText("Budget: $" + this.budget);
     		this.set = true;
     	} else {
     		budgetLabel.setText("Budget: No Limit");
@@ -285,6 +297,8 @@ public class ShopController implements Initializable{
     	Item k;
     	Item t;
     	
+    	
+    	
     	// if onClick listener ListView addButton then proceed else it is add from editCart menu
     	if(event.getSource().equals(addButton)) {
 	    	quantity = cartAmountText.getText().toString();
@@ -329,6 +343,17 @@ public class ShopController implements Initializable{
     	t.setQuantity(quantity);
     	t.setCategory("add");
     	
+    	// checks to see if items being added exceeds budget
+		if(this.set) {	
+    		if(Double.parseDouble(this.budget) < this.model.getTotal() + (Double.parseDouble(quantity) * Double.parseDouble(k.getPrice()))){
+				Alert a = new Alert(AlertType.NONE);
+		    	a.setAlertType(AlertType.ERROR);
+		    	a.setContentText("Error: current items being added exceeds budget");
+		    	a.show();
+		    	return;
+			}
+		}
+    	
     	// check calls model.updateFiles sening t in and if returns -1 the user requested more than available send alert and return
     	check = this.model.updateFiles(t);
     	if(check == -1) {
@@ -346,7 +371,7 @@ public class ShopController implements Initializable{
     
     // refreshes the cart ListView with the proper cart values. it formats the strings to be added in the format, itemName, quantity, price
     private void loadCart() {
-    	totalLabel.setText("SubTotal: " + String.valueOf(this.model.getTotal()));
+    	totalLabel.setText("SubTotal: $" + String.valueOf(this.model.getTotal()));
     	HashMap<String, String> h = model.getCart();
     	Iterator it = h.entrySet().iterator();
     	while (it.hasNext()) {
