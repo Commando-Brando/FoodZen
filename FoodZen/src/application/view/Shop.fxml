@@ -37,7 +37,7 @@
             <Button fx:id="snacksButton" mnemonicParsing="false" onAction="#loadHelper" text="Snacks" />
             <Label prefHeight="20.0" prefWidth="149.0" text="Cart:">
                <font>
-                  <Font name="Comic Sans MS" size="20.0" />
+                  <Font name="Comic Sans MS" size="15.0" />
                </font>
             </Label>
          </children>
@@ -118,7 +118,7 @@
          </font></Label>
       <Label fx:id="budgetLabel" layoutX="574.0" layoutY="140.0" prefHeight="28.0" prefWidth="180.0" text="Budget: No Limit">
          <font>
-            <Font name="Comic Sans MS" size="20.0" />
+            <Font name="Comic Sans MS" size="14.0" />
          </font>
       </Label>
       <AnchorPane fx:id="budgetPane" layoutX="279.0" layoutY="222.0" prefHeight="207.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" visible="false">
