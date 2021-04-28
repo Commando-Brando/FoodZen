@@ -112,9 +112,9 @@
       <Label layoutX="574.0" layoutY="205.0" text="Item" />
       <Label layoutX="641.0" layoutY="205.0" text="Quantity" />
       <Label layoutX="701.0" layoutY="205.0" text="Price" />
-      <Label fx:id="totalLabel" layoutX="574.0" layoutY="518.0" prefHeight="25.0" prefWidth="180.0" text="SubTotal: N/A">
+      <Label fx:id="totalLabel" layoutX="570.0" layoutY="511.0" prefHeight="25.0" prefWidth="180.0" text="Total with taxe:">
          <font>
-            <Font size="16.0" />
+            <Font size="13.0" />
          </font></Label>
       <Label fx:id="budgetLabel" layoutX="574.0" layoutY="140.0" prefHeight="28.0" prefWidth="180.0" text="Budget: No Limit">
          <font>

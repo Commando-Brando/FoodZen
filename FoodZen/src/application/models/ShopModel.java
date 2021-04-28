@@ -249,7 +249,8 @@ public class ShopModel {
 		        Item newItem = getItem(pair.getKey());
 		        total += Double.parseDouble(pair.getValue()) * Double.parseDouble(newItem.getPrice());
 			}
-			return total;
+			double tax = total * .075;
+			return total + tax;
 		}
 		
 		// if the user sets budget this method writes the budget to budget.txt so it is remembered on their next session
