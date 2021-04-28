@@ -98,9 +98,6 @@ public class ShopController implements Initializable{
     @FXML
     private Button editCartButton;
     
-    @FXML
-    private TextField itemText;
-    
     // Labels
     @FXML
     private Label itemLabel;
@@ -125,6 +122,10 @@ public class ShopController implements Initializable{
     private TextField cartAmountText2;
     
     // TextFields
+    
+    @FXML
+    private TextField itemText;
+    
     @FXML
     private Button addItemText;
     
@@ -150,11 +151,11 @@ public class ShopController implements Initializable{
     
     private boolean set;
     
-    String name;
+    private String name;
     
-    String budget;
+    private String budget;
     
-    String price;
+    private String price;
     
     // loadHelper acts as a middle man to figure out which button was pressed and then call the loader with the button text
     @FXML
@@ -222,14 +223,6 @@ public class ShopController implements Initializable{
     	budgetText.clear();
     	budgetPane.setVisible(false);
     	this.model.setBudget(this.budget);
-    }
-    
-    // test method to print out the stock to stdout
-    public void printStock() {
-    	for(Item i: stock) {
-	        
-	        //System.out.println(total);
-	     }
     }
     
     /*
@@ -320,7 +313,7 @@ public class ShopController implements Initializable{
     
     // performs basic UI logic and model calls to add an item to the cart. it refreshes the cart ListView by calling loadCart() and has the model update the cart.properties file
     @FXML
-    void addToCart(ActionEvent event) throws Exception {
+    public void addToCart(ActionEvent event) throws Exception {
     	String quantity;
     	String name;
     	Item k;
