@@ -22,6 +22,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/*
+ *  AccountController creates a account creation scene that will allow users 
+ *  to register an account, or login with an existing account. Once the user logs in, 
+ *  they will receive a coupon code for use at checkout
+ *  
+ */
 
 public class AccountController implements Initializable{
 	

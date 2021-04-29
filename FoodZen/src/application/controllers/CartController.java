@@ -28,6 +28,11 @@ import java.util.regex.Pattern;
 
 import application.Item;
 import application.models.CartModel;
+/*
+ *  CartController class is used for adjusting a user's cart before checking out
+ *  The shopper can add or subtract items as needed, or even adjust their budget.
+ *  This class also allows the user to proceed to checkout
+ */
 
 public class CartController implements Initializable{
 	

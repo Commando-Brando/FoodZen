@@ -5,8 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-
-
+/*
+ *  Main class is used to create the primaryStage 
+ *  It is primarily for setting up the HomePage and moving between scenes
+ */
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
