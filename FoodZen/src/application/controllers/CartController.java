@@ -25,14 +25,14 @@ import java.util.Iterator;
 import java.util.ResourceBundle;
 
 import application.Item;
-import application.models.ShopModel;
+import application.models.CartModel;
 
 public class CartController implements Initializable{
 	
 	@FXML
 	private AnchorPane mainActivity;
 	@FXML
-	private ShopModel modelCart;
+	private CartModel modelCart;
 	@FXML
 	private ListView<String> cartList;
 	
@@ -43,6 +43,8 @@ public class CartController implements Initializable{
 	private Label taxLabel;
 	@FXML
 	private Label totalLabel;
+	@FXML
+	private Label budgetLabel;
 	
 	//FXButtons
 	@FXML
@@ -51,12 +53,22 @@ public class CartController implements Initializable{
 	private Button clearAllButton;
 	@FXML
 	private Button subtractButton;
+	@FXML
+	private Button confirmBudgetButton;
+	@FXML
+	private Button clearBudgetButton;
 	
 	//FXTextFields
 	@FXML
 	private TextField cartItemText;
 	@FXML
 	private TextField cartQuantityText;
+	@FXML
+	private TextField budgetText;
+	
+	private boolean set;
+	
+	String budget;
 	 
 	// takes in an ActionEvent after home button clicked. resets the pane to the home screen
     @FXML
@@ -72,7 +84,7 @@ public class CartController implements Initializable{
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
     	try {
-    		modelCart = new ShopModel();
+    		modelCart = new CartModel();
     		System.out.println("try was successful");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -80,6 +92,13 @@ public class CartController implements Initializable{
 			System.out.println("try was not successful");
 		}
     	loadCartNTotal();
+    	
+    	// calls model to retrieve the previous budget set by user if there is one
+    	this.budget = this.modelCart.readBudget();
+    	if(!this.budget.equals("No Limit")) {
+    		this.set = true;
+    		budgetLabel.setText("Budget: $" + this.budget);
+    	}
 	}
     
     // refreshes the cart ListView with the proper cart values. it formats the strings to be added in the format, itemName, quantity, price
@@ -87,7 +106,7 @@ public class CartController implements Initializable{
     	HashMap<String, String> h = modelCart.getCart();
     	Iterator it = h.entrySet().iterator();
     	double subTotal = 0.0;
-    	double salesTax = 0.0075;
+    	double salesTax = 0.075;
     	while (it.hasNext()) {
 	        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
 	        it.remove(); // avoids a ConcurrentModificationException
@@ -118,7 +137,7 @@ public class CartController implements Initializable{
     void addToCart(ActionEvent event) throws Exception {
     	String itemName = cartItemText.getText().toString();
     	String quantity = cartQuantityText.getText().toString();
-    	Item t;
+    	Item t,k = this.modelCart.getItem(itemName);
     	
     	// Immediately check to see if either text fields are empty if so return and send alert
     	if(itemName.equals("") || quantity.equals("")) {
@@ -143,6 +162,18 @@ public class CartController implements Initializable{
 		t = new Item(itemName);
 		t.setQuantity(quantity);
 		t.setCategory("add");
+		t.setPrice(k.getPrice());
+		
+		// checks to see if items being added exceeds budget
+		if(this.set) {	
+		    if(Double.parseDouble(this.budget) < this.modelCart.getTotal() + (Double.parseDouble(quantity) * Double.parseDouble(k.getPrice()))){
+				Alert a = new Alert(AlertType.NONE);
+				   a.setAlertType(AlertType.ERROR);
+				   a.setContentText("Error: current items being added exceeds budget");
+				   a.show();
+				   return;
+			}
+		}
 		
 		// check calls modelCart.updateFiles sending t in and if it returns -1 the user requested more than available, send alert and return
 		check = this.modelCart.updateFiles(t);
@@ -221,4 +252,51 @@ public class CartController implements Initializable{
     	cartItemText.clear();
     	cartQuantityText.clear();
     }
+    
+ // method processes budget selection as onActions for the "confirm" & "no limit" buttons in the budget menu
+    @FXML
+    public void processBudget(ActionEvent event) {
+    	// if else checks which button was pressed
+    	if(event.getSource() == confirmBudgetButton) {
+    		
+    		// error trap user hitting confirm button without inputting a number
+    		if(budgetText.getText().toString().equals("")) {
+    			Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText("No budget entered please enter a number greater than 0");
+            	a.show();
+            	return;
+    		}
+    		
+    		this.budget = budgetText.getText().toString();
+    		
+    		// error trap to see if user enter a budget less than 0
+    		if(Double.parseDouble(this.budget) < 0) {
+    			Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText("It is impossible to have a negative budget please select one greater than 0");
+            	a.show();
+            	return;
+    		}
+    		
+    		// error trap to see if budget being set is less than the current total
+    		if(Double.parseDouble(this.budget) < ( 1.075 * (this.modelCart.getTotal()) ) ) {
+    			Alert a = new Alert(AlertType.NONE);
+            	a.setAlertType(AlertType.ERROR);
+            	a.setContentText("Current total exceeds desired budget.\nPlease remove items in cart to match\ndesired budget or set a higher budget.");
+            	a.show();
+            	return;
+    		}
+    		budgetLabel.setText("Budget: $" + this.budget);
+    		this.set = true;
+    	} else {
+    		this.budget = "No Limit";
+    		budgetLabel.setText("Budget: No Limit");
+    		this.set = false;
+    	}
+    	budgetText.clear();
+    	//budgetPane.setVisible(false);
+    	this.modelCart.setBudget(this.budget);
+    }
+    
 }
