@@ -48,6 +48,10 @@ public class CartController implements Initializable{
 	private Label budgetLabel;
 	@FXML
 	private Label result;
+	@FXML
+	private Label totalWithCoupon;
+	@FXML
+	private Label couponApplied;
 	
 	
 	// FXButtons
@@ -61,6 +65,10 @@ public class CartController implements Initializable{
 	private Button confirmBudgetButton;
 	@FXML
 	private Button clearBudgetButton;
+	@FXML
+	private Button applyCoupon;
+	@FXML
+	private Button couponButton;
 	
 	// FXTextFields
 	@FXML
@@ -77,6 +85,8 @@ public class CartController implements Initializable{
 	private TextField expirationText;
 	@FXML
 	private TextField cvvText;
+	@FXML
+	private TextField couponText;
 	
 	@FXML
 	private CartModel modelCart;
@@ -84,6 +94,7 @@ public class CartController implements Initializable{
 	private ListView<String> cartList;
 	
 	private boolean set;
+	
 	
 	String budget;
 	 
@@ -134,7 +145,7 @@ public class CartController implements Initializable{
     	double salesTax = 0.075;
     	while (it.hasNext()) {
 	        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
-	        it.remove(); // avoids a ConcurrentModificationException
+	       // it.remove(); // avoids a ConcurrentModificationException
 	        // key = item name
 	        String s = pair.getKey(); 
 	        // number of spaces
@@ -155,6 +166,19 @@ public class CartController implements Initializable{
     	taxLabel.setText("Tax:  " + String.format("%.2f", tax));
     	double total = tax + subTotal;
     	totalLabel.setText("Total:  " + String.format("%.2f", total));
+    	
+    }
+    
+    public double getTotal() {
+    	HashMap<String, String> h = modelCart.getCart();
+    	Iterator it = h.entrySet().iterator();
+    	double total = 0.0;
+    	
+    	while (it.hasNext()) {
+	        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
+	        total += (Double.parseDouble(modelCart.getItem(pair.getKey()).getPrice()) * Double.parseDouble(pair.getValue()));
+    	}
+    	return total * 1.075;
     }
     
  // performs basic UI logic and model calls to add an item to the cart. it refreshes the cart ListView by calling loadCart() and has the model update the cart.properties file
@@ -369,6 +393,21 @@ public class CartController implements Initializable{
     @FXML
     public void cancelMenu(ActionEvent event) {
     	paymentPane.setVisible(false);
+    }
+    
+    @FXML
+    public void applyCoupon(ActionEvent event) {
+    	String userCoupon = couponText.getText().toString();
+    	if(userCoupon.equals("BUDGET")) {
+    		couponButton.setVisible(false);
+    		couponApplied.setVisible(true);
+    		String total = String.format("%.2f", (getTotal() - (getTotal() * .10)));
+    		totalWithCoupon.setText("Total with Coupon $" + total );
+    		couponText.clear();
+    	}
+    	else {
+    		totalWithCoupon.setText("Error: Invalid Coupon");
+    	}
     }
    
 }
