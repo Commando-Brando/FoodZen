@@ -16,6 +16,11 @@ import java.util.Map;
 import java.util.Properties;
 
 import application.Item;
+/*
+ *  ShopModel class used to create adjustments to the ShopController, 
+ *  through the use ShopModel constructor, HashMaps, Properties, and File objects
+ *  
+ */
 
 public class ShopModel {
 	

@@ -12,8 +12,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
-
 import application.Item;
+/*
+ *  CartModel class used to create adjustments to the CartController, 
+ *  through the use CartModel constructor, HashMaps, Properties, and File objects
+ *  
+ */
 
 public class CartModel {
 	private HashMap<String, String> quantities;

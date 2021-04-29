@@ -27,6 +27,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+/*
+ *  ShopController class contains the list of items for a shopper to pick and add to their cart.
+ *  This class allows the person to filter by type of item and will total up their bill, while also allowing 
+ *  a user to provide a budget. The user will also be able to move on to the cart, or return to home.
+ *  
+ */
 
 public class ShopController implements Initializable{
 	

@@ -15,6 +15,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
+/*
+ *  Main Controller class allows the shopper to move to either the cart, shop, or account scene
+ *  It is also provides contact information, an about me, and other Foodzen information
+ *  
+ */
 
 public class MainController implements Initializable{
 	// AnchorPane

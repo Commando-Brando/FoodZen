@@ -6,9 +6,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+/*
+ *  UserModel class used to create adjustments to the AccountController, 
+ *  through the use of a create method and login method, HashMaps, Properties, and reading 
+ *  as well as writing into the properties file
+ *  
+ */
 
 public class UserModel {
 	
