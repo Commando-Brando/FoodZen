@@ -78,7 +78,7 @@ public class MainController implements Initializable{
     @FXML
     void accountLaunch(ActionEvent event) throws Exception {
     	launchActivity = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
-    	Scene scene = new Scene (launchActivity,500,300);
+    	Scene scene = new Scene (launchActivity,800,600);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
