@@ -2,7 +2,10 @@ package application.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
+
 import application.models.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,9 +32,6 @@ public class AccountController implements Initializable{
 	
 	// Hyperlinks
 	@FXML
-	private Hyperlink forgotPassword;
-	
-	@FXML
 	private Hyperlink guest;
 	
 	// Text Fields
@@ -48,24 +48,10 @@ public class AccountController implements Initializable{
 	// creates user account on button click
 	@FXML
 	void createAccount(ActionEvent event) throws Exception {
+		HashMap<String, String> users = new HashMap<String, String>();
 		String key = userName.getText().toString();
 		String value = password.getText().toString();
 		UserModel.create(key,value);
-		if (key == null || key.isEmpty() || value == null || value.isEmpty()) {
-			Alert a = new Alert(AlertType.ERROR,
-					"Missing/incorrect information! Fill out completely and resubmit.\nThank you!");
-			a.setTitle("ERROR!!!");
-			a.setHeaderText("Try again!");
-			a.show();
-			return;
-		} else {
-			Alert a = new Alert(AlertType.CONFIRMATION,
-					"You account has been successfully created! Welcome " + key + "!");
-			a.setTitle("Welcome!");
-			a.setHeaderText("Account creation complete!");
-			a.show();
-			return;
-		}
 	}
 	
 	// logs in user on button click

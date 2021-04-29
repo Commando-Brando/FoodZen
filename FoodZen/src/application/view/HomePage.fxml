@@ -12,7 +12,7 @@
    <children>
       <Label layoutX="253.0" layoutY="60.0" prefHeight="89.0" prefWidth="205.0" text="Foodzen">
          <font>
-            <Font size="47.0" />
+            <Font name="Comic Sans MS Bold" size="47.0" />
          </font>
       </Label>
       <ImageView fitHeight="205.0" fitWidth="211.0" layoutX="33.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
