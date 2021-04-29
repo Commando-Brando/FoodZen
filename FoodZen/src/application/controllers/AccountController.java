@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -22,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class AccountController implements Initializable{
+	
 	// AnchorPane
 	@FXML
 	private AnchorPane mainActivity;
@@ -30,7 +32,19 @@ public class AccountController implements Initializable{
 	@FXML
 	private Label accountPage;
 	
-	// Hyperlinks
+	@FXML
+	private Label popLabel;
+	
+	@FXML
+	private Label couponLabel;
+	
+	@FXML
+	private Label enjoyLabel;
+	
+	@FXML
+	private Label welcomeLabel;
+	
+	// HyperLinks
 	@FXML
 	private Hyperlink guest;
 	
@@ -40,6 +54,13 @@ public class AccountController implements Initializable{
 	
 	@FXML
 	private TextField password;
+	
+	// Buttons
+	@FXML
+	private Button loginButton;
+	
+	@FXML
+	private Button registerButton;
 	
 	// Model
 	@FXML
@@ -68,12 +89,16 @@ public class AccountController implements Initializable{
 			a.show();
 			return;
 		} else {
-			mainActivity = FXMLLoader.load(getClass().getResource("../view/HomePage.fxml"));
-	    	Scene scene = new Scene (mainActivity);
-	    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-	    	Window.setScene(scene);
-	    	Window.show();
-	    	
+			password.setVisible(false);
+			userName.setVisible(false);
+			guest.setVisible(false);
+			loginButton.setVisible(false);
+			registerButton.setVisible(false);
+			popLabel.setVisible(true);
+			welcomeLabel.setText("Welcome " + key + " to FoodZen!");
+			welcomeLabel.setVisible(true);
+			couponLabel.setVisible(true);
+			enjoyLabel.setVisible(true);
 		}
 	}
 	
@@ -87,9 +112,9 @@ public class AccountController implements Initializable{
     	Window.show();
     }
     
+    // initialize to help initialized any FXML attributes
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		
 	}
 }
