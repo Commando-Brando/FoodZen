@@ -20,7 +20,6 @@ public class UserModel {
 	// method for creating username and password
 	public static void create(String username, String password) throws IOException {
 		try {
-			System.out.println("testing!!!");
 			HashMap<String, String> users = new HashMap<String, String>();
 			Properties p1;
 			// FileInputStream for users properties file
@@ -28,12 +27,10 @@ public class UserModel {
 			
 			//initializes properties objects
 			p1 = new Properties();
-			System.out.println("error here?!?!");
 			// loads properties objects with their respective files
 			p1.load(ureader);
 			
 			//close FileInputStream objects
-			System.out.println("error here?!?!");
 			ureader.close();
 			for(String key: p1.stringPropertyNames()){
 		    	users.put(key, p1.get(key).toString());
@@ -51,7 +48,6 @@ public class UserModel {
 			
 			// if username already exists, will be prompted to choose different name
 			if(users.containsKey(username)) {
-				System.out.println("is this hitting?!");
 				Alert a = new Alert(AlertType.ERROR,
 						"Username taken! Choose another name!");
 				a.setTitle("ERROR!!!");
@@ -62,7 +58,6 @@ public class UserModel {
 				users.put(username, password);
 				p1.putAll(users);
 				FileOutputStream writer = new FileOutputStream("src/application/properties/users.properties");
-				System.out.println("test2!");
 				p1.store(writer, null);
 				writer.close();
 				Alert a = new Alert(AlertType.CONFIRMATION,
