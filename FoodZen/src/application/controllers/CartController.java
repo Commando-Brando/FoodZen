@@ -29,12 +29,11 @@ import application.models.CartModel;
 
 public class CartController implements Initializable{
 	
+	// AnchorPanes
 	@FXML
 	private AnchorPane mainActivity;
 	@FXML
-	private CartModel modelCart;
-	@FXML
-	private ListView<String> cartList;
+	private AnchorPane paymentPane;
 	
 	//FXLabels
 	@FXML
@@ -46,7 +45,7 @@ public class CartController implements Initializable{
 	@FXML
 	private Label budgetLabel;
 	
-	//FXButtons
+	// FXButtons
 	@FXML
 	private Button addButton;
 	@FXML
@@ -58,13 +57,19 @@ public class CartController implements Initializable{
 	@FXML
 	private Button clearBudgetButton;
 	
-	//FXTextFields
+	// FXTextFields
 	@FXML
 	private TextField cartItemText;
 	@FXML
 	private TextField cartQuantityText;
 	@FXML
 	private TextField budgetText;
+	
+	
+	@FXML
+	private CartModel modelCart;
+	@FXML
+	private ListView<String> cartList;
 	
 	private boolean set;
 	
@@ -297,6 +302,18 @@ public class CartController implements Initializable{
     	budgetText.clear();
     	//budgetPane.setVisible(false);
     	this.modelCart.setBudget(this.budget);
+    }
+    
+ // pops up payment menu
+    @FXML
+    public void showMenu(ActionEvent event) {
+    	paymentPane.setVisible(true);
+    }
+    
+ // closes payment menu
+    @FXML
+    public void cancelMenu(ActionEvent event) {
+    	paymentPane.setVisible(false);
     }
     
 }

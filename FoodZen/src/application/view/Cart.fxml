@@ -44,7 +44,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="553.0" layoutY="506.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="210.0" text="Proceed to Payment">
+      <Button layoutX="553.0" layoutY="506.0" mnemonicParsing="false" onAction="#showMenu" prefHeight="68.0" prefWidth="210.0" text="Proceed to Payment">
          <font>
             <Font size="20.0" />
          </font>
@@ -113,5 +113,12 @@
             <Font size="25.0" />
          </font>
       </Label>
+      <AnchorPane fx:id="paymentPane" layoutX="208.0" layoutY="174.0" prefHeight="300.0" prefWidth="375.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" visible="false">
+         <children>
+            <Label layoutX="99.0" layoutY="54.0" text="Enter Your credit card " />
+            <TextField layoutX="76.0" layoutY="95.0" />
+            <Button layoutX="120.0" layoutY="174.0" mnemonicParsing="false" onAction="#cancelMenu" text="Take Payment" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
