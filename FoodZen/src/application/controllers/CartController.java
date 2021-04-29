@@ -23,18 +23,19 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import application.Item;
 import application.models.CartModel;
 
 public class CartController implements Initializable{
 	
+	// AnchorPanes
 	@FXML
 	private AnchorPane mainActivity;
 	@FXML
-	private CartModel modelCart;
-	@FXML
-	private ListView<String> cartList;
+	private AnchorPane paymentPane;
 	
 	//FXLabels
 	@FXML
@@ -45,8 +46,11 @@ public class CartController implements Initializable{
 	private Label totalLabel;
 	@FXML
 	private Label budgetLabel;
+	@FXML
+	private Label result;
 	
-	//FXButtons
+	
+	// FXButtons
 	@FXML
 	private Button addButton;
 	@FXML
@@ -58,13 +62,26 @@ public class CartController implements Initializable{
 	@FXML
 	private Button clearBudgetButton;
 	
-	//FXTextFields
+	// FXTextFields
 	@FXML
 	private TextField cartItemText;
 	@FXML
 	private TextField cartQuantityText;
 	@FXML
 	private TextField budgetText;
+	@FXML
+	private TextField creditCardText;
+	@FXML
+	private TextField nameOnCardText;
+	@FXML
+	private TextField expirationText;
+	@FXML
+	private TextField cvvText;
+	
+	@FXML
+	private CartModel modelCart;
+	@FXML
+	private ListView<String> cartList;
 	
 	private boolean set;
 	
@@ -80,6 +97,14 @@ public class CartController implements Initializable{
     	Window.show();
     }
 
+    @FXML
+    void goShop(ActionEvent event) throws Exception {
+    	mainActivity = FXMLLoader.load(getClass().getResource("../view/Shop.fxml"));
+    	Scene scene = new Scene (mainActivity);
+    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Window.setScene(scene);
+    	Window.show();
+    }
     
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -299,4 +324,51 @@ public class CartController implements Initializable{
     	this.modelCart.setBudget(this.budget);
     }
     
+ // pops up payment menu
+    @FXML
+    public void showMenu(ActionEvent event) {
+    	paymentPane.setVisible(true);
+    }
+    
+ // closes payment menu
+    @FXML
+    public void processPayment(ActionEvent event) {
+    	// Credit Card Number
+    	String numberOnCard = creditCardText.getText().toString();
+    	Pattern userCard = Pattern.compile("^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$");
+    	Matcher matchNum = userCard.matcher(numberOnCard);
+    	
+    	// Card Name
+    	String nameOnCard = nameOnCardText.getText().toString();
+    	
+    	// Expiration
+    	String expirationOnCard = expirationText.getText().toString();
+    	Pattern userEx = Pattern.compile("^[0-9]{2}/[0-9]{2}$");
+    	Matcher matchEx = userEx.matcher(expirationOnCard);
+    	
+    	// CVV
+    	String cvvOnCard = cvvText.getText().toString();
+    	Pattern userCVV = Pattern.compile("^[0-9]{3}$");
+    	Matcher matchCVV = userCVV.matcher(cvvOnCard);
+    	
+    	
+    	if(matchNum.find() & matchEx.find() & matchCVV.find()) {
+    		result.setText("Order Has been Placed\nThank you " + nameOnCard + "\nfor choosing FoodZen!");
+    		creditCardText.clear();
+    		nameOnCardText.clear();
+    		expirationText.clear();
+    		cvvText.clear();
+    		//paymentPane.setVisible(false);
+    	}
+    	else {
+    		result.setText("Error: Please make sure that\nAll information is in\ncorrect format");
+    	
+    	}
+    }
+    
+    @FXML
+    public void cancelMenu(ActionEvent event) {
+    	paymentPane.setVisible(false);
+    }
+   
 }
