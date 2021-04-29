@@ -25,24 +25,24 @@
       <Hyperlink fx:id="guest" layoutX="162.0" layoutY="163.0" onAction="#goHome" text="Continue as guest" />
       <Button fx:id="loginButton" layoutX="137.0" layoutY="240.0" mnemonicParsing="false" onAction="#loginAccount" text="Login" />
       <Button fx:id="registerButton" layoutX="220.0" layoutY="240.0" mnemonicParsing="false" onAction="#createAccount" text="Register" />
-      <Label fx:id="couponLabel" layoutX="92.0" layoutY="153.0" prefHeight="43.0" prefWidth="343.0" text="Your weekly coupon code: BUDGET" visible="false">
+      <Label fx:id="couponLabel" layoutX="62.0" layoutY="142.0" prefHeight="43.0" prefWidth="436.0" text="Weekly coupon for 10% off: BUDGET" visible="false">
          <font>
-            <Font name="Comic Sans MS" size="19.0" />
+            <Font name="Comic Sans MS" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="popLabel" layoutX="92.0" layoutY="125.0" text="Type your coupon in at checkout!" visible="false">
+      <Label fx:id="popLabel" layoutX="83.0" layoutY="107.0" text="Type your coupon in at checkout!" visible="false">
          <font>
-            <Font name="Comic Sans MS" size="19.0" />
+            <Font name="Comic Sans MS" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="welcomeLabel" layoutX="113.0" layoutY="97.0" text="Welcome! Brandon to FoodZen!" visible="false">
+      <Label fx:id="welcomeLabel" layoutX="118.0" layoutY="42.0" text="Welcome Brandon!" visible="false">
          <font>
-            <Font name="Comic Sans MS" size="19.0" />
+            <Font name="Dominican Regular" size="46.0" />
          </font>
       </Label>
-      <Label fx:id="enjoyLabel" layoutX="160.0" layoutY="196.0" text="Enjoy your shopping!" visible="false">
+      <Label fx:id="enjoyLabel" layoutX="146.0" layoutY="192.0" text="Enjoy your shopping!" visible="false">
          <font>
-            <Font name="Comic Sans MS" size="19.0" />
+            <Font name="Comic Sans MS" size="22.0" />
          </font>
       </Label>
    </children>
