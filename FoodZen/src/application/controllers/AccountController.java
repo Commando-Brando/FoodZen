@@ -10,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -43,16 +45,50 @@ public class AccountController implements Initializable{
 	@FXML
 	private UserModel uM;
 	
+	// creates user account on button click
 	@FXML
 	void createAccount(ActionEvent event) throws Exception {
 		String key = userName.getText().toString();
 		String value = password.getText().toString();
 		UserModel.create(key,value);
+		if (key == null || key.isEmpty() || value == null || value.isEmpty()) {
+			Alert a = new Alert(AlertType.ERROR,
+					"Missing/incorrect information! Fill out completely and resubmit.\nThank you!");
+			a.setTitle("ERROR!!!");
+			a.setHeaderText("Try again!");
+			a.show();
+			return;
+		} else {
+			Alert a = new Alert(AlertType.CONFIRMATION,
+					"You account has been successfully created! Welcome " + key + "!");
+			a.setTitle("Welcome!");
+			a.setHeaderText("Account creation complete!");
+			a.show();
+			return;
+		}
 	}
 	
+	// logs in user on button click
 	@FXML
 	void loginAccount(ActionEvent event) throws Exception {
-		
+		String key = userName.getText().toString();
+		String value = password.getText().toString();
+		UserModel.login(key, value);
+		if (key == null || key.isEmpty() || value == null || value.isEmpty()) {
+			Alert a = new Alert(AlertType.ERROR,
+					"Missing/incorrect information! Fill out completely and resubmit.\nThank you!");
+			a.setTitle("ERROR!!!");
+			a.setHeaderText("Try again!");
+			a.show();
+			return;
+		} else {
+			mainActivity = FXMLLoader.load(getClass().getResource("../view/HomePage.fxml"));
+	    	Scene scene = new Scene (mainActivity);
+	    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	    	Window.setScene(scene);
+	    	Window.show();
+	    	
+		}
 	}
 	
 	// takes in an ActionEvent after home button clicked. resets the pane to the home screen
@@ -65,16 +101,6 @@ public class AccountController implements Initializable{
     	Window.show();
     }
     
- // Launches Shop scene
-    @FXML
-    void shopLaunch(ActionEvent event) throws IOException {
-    	mainActivity = FXMLLoader.load(getClass().getResource("../view/Shop.fxml"));
-    	Scene scene = new Scene (mainActivity,800,600);
-    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    	Window.setScene(scene);
-    	Window.show();
-    }
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

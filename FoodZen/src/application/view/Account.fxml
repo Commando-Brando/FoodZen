@@ -18,7 +18,7 @@
       <TextField fx:id="password" layoutX="162.0" layoutY="138.0" promptText="Enter password" />
       <Button layoutX="320.0" layoutY="240.0" mnemonicParsing="false" onAction="#goHome" text="Home" />
       <Hyperlink fx:id="guest" layoutX="162.0" layoutY="163.0" onAction="#goHome" text="Continue as guest" />
-      <Button layoutX="137.0" layoutY="240.0" mnemonicParsing="false" onAction="#goHome" text="Login" />
+      <Button layoutX="137.0" layoutY="240.0" mnemonicParsing="false" onAction="#loginAccount" text="Login" />
       <Button layoutX="220.0" layoutY="240.0" mnemonicParsing="false" onAction="#createAccount" text="Create" />
    </children>
 </AnchorPane>
