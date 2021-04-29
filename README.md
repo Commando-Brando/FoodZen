@@ -2,7 +2,7 @@ Project: FoodZen
 
 Team name: K-E-B
 
-Team: Brandon Muller (Leader Software Engineer) Keven Beasley (Software Engineer) Edwin  Calderon (Software Engineer)
+Team: Brandon Muller (Lead Software Engineer) Keven Beasley (Software Engineer) Edwin  Calderon (Software Engineer)
 
 Description: FoodZen is a simulated ecommerce JavaFX application that allows users to buy groceries with features aimed at helping people budget.
 
