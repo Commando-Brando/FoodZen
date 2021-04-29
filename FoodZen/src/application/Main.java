@@ -12,9 +12,10 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("view/HomePage.fxml"));
-			Scene scene = new Scene(root,1200,800);
+			Scene scene = new Scene(root,900,600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Foodzen");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
