@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -64,7 +65,7 @@ public class AccountController implements Initializable{
 	
 	@FXML
 	private Button homeButton;
-	
+
 	// Model
 	@FXML
 	private UserModel uM;
@@ -98,9 +99,10 @@ public class AccountController implements Initializable{
 			guest.setVisible(false);
 			loginButton.setVisible(false);
 			registerButton.setVisible(false);
+			accountPage.setVisible(false);
 			// makes visible the welcome messages
 			popLabel.setVisible(true);
-			welcomeLabel.setText("Welcome " + key + " to FoodZen!");
+			welcomeLabel.setText("Welcome " + key + "!");
 			welcomeLabel.setVisible(true);
 			couponLabel.setVisible(true);
 			enjoyLabel.setVisible(true);
