@@ -62,6 +62,9 @@ public class AccountController implements Initializable{
 	@FXML
 	private Button registerButton;
 	
+	@FXML
+	private Button homeButton;
+	
 	// Model
 	@FXML
 	private UserModel uM;
@@ -88,17 +91,22 @@ public class AccountController implements Initializable{
 			a.setHeaderText("Try again!");
 			a.show();
 			return;
-		} else {
+		} else { // resets UI to send welcome message and welcome coupon
+			// sets login variables visibility to false
 			password.setVisible(false);
 			userName.setVisible(false);
 			guest.setVisible(false);
 			loginButton.setVisible(false);
 			registerButton.setVisible(false);
+			// makes visible the welcome messages
 			popLabel.setVisible(true);
 			welcomeLabel.setText("Welcome " + key + " to FoodZen!");
 			welcomeLabel.setVisible(true);
 			couponLabel.setVisible(true);
 			enjoyLabel.setVisible(true);
+			// repositions the home button to be centered
+			homeButton.setLayoutX(220);
+			homeButton.setLayoutY(240);
 		}
 	}
 	
