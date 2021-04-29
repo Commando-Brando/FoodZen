@@ -97,7 +97,6 @@ public class ShopModel {
 			if(type.equals("quantity")) {
 			    while (it.hasNext()) {
 			        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
-			        //System.out.println(pair.getKey() + " = " + pair.getValue());
 			        it.remove(); // avoids a ConcurrentModificationException
 			        Item newItem = new Item(pair.getKey(), pair.getValue());
 			        this.stock.add(newItem);
@@ -105,7 +104,6 @@ public class ShopModel {
 			} else if(type.equals("price")){
 				while (it.hasNext()) {
 			        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
-			        //System.out.println(pair.getKey() + " = " + pair.getValue());
 			        it.remove(); // avoids a ConcurrentModificationException
 			        Item newItem = new Item(pair.getKey(), pair.getValue());
 			        for(int i = 0; i < this.stock.size(); i++) {
@@ -116,7 +114,6 @@ public class ShopModel {
 			} else {
 				while (it.hasNext()) {
 			        HashMap.Entry<String, String> pair = (HashMap.Entry<String, String>)it.next();
-			        //System.out.println(pair.getKey() + " = " + pair.getValue());
 			        it.remove(); // avoids a ConcurrentModificationException
 			        Item newItem = new Item(pair.getKey(), pair.getValue());
 			        for(int i = 0; i < this.stock.size(); i++) {
@@ -127,18 +124,10 @@ public class ShopModel {
 			}
 		}
 		
-		// prints out stdout the items in the stock ArrayList
-		public void printStock() {
-			for(Item i: this.stock) 
-				System.out.println(i.getName() + " " + i.getPrice() + " " + i.getQuantity() + " " + i.getCategory());
-		}
-		
 		// getItem is a getter method for a specific item in the stock array by searching for it with a String name parameter 
 		public Item getItem(String name) {
 	    	for(Item i: this.stock)  
 	    		if(i.getName().equals(name)) {
-	    			System.out.println("Get Item Price: " + i.getPrice());
-	    			System.out.println("Get Item Price: " + i.getName());
 	    			return i;
 	    		}
 	    	Item temp = null;
@@ -153,7 +142,6 @@ public class ShopModel {
 			p4.load(cartReader);
 			cartReader.close();
 			this.cart = populateHash(p4);
-			System.out.println("read in: " + this.cart);
 		}
 				
 		// updateFiles updates the cart properties file with any changes. Takes in an Item to be added and returns -1 if user asked for too much or 0 for success
@@ -161,8 +149,6 @@ public class ShopModel {
 			readCart();
 			int total;
 			
-	        System.out.println("Before writing: " + this.cart);
-	        
 	        // checks to see if the category is subtract for subtract cart file writing else performs addition logic
 	        if(i.getCategory().equals("subtract")) {
 	        	if(i.getQuantity().equals("0")) {
@@ -192,7 +178,6 @@ public class ShopModel {
 	        // uses a output stream, properties file, and cart HashMap to write the cart to the properties file
 	        FileOutputStream cartWriter = new FileOutputStream("src/application/properties/cart.properties");
 	        Properties p = new Properties();
-	        System.out.println("Writing to file: " + this.cart);
 	        for(Map.Entry<String, String> entry: this.cart.entrySet()) {
 				p.put(entry.getKey(), entry.getValue());
 		        }
