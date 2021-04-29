@@ -150,7 +150,7 @@ public class CartController implements Initializable{
 	        subTotal += (BigDecimal.valueOf(Double.parseDouble(modelCart.getItem(pair.getKey()).getPrice()) * Double.parseDouble(pair.getValue())).setScale(3, RoundingMode.HALF_UP).doubleValue());
     	}
     	// Set text value for subTotal, tax, and Total
-    	subTotalLabel.setText("SubTotal:  " + (String.valueOf(subTotal)));
+    	subTotalLabel.setText("SubTotal:  " + (String.valueOf(String.format("%.2f", (subTotal)))));
     	double tax = (subTotal * salesTax);
     	taxLabel.setText("Tax:  " + String.format("%.2f", tax));
     	double total = tax + subTotal;
