@@ -122,7 +122,7 @@ public class AccountController implements Initializable{
     @FXML
     void goHome(ActionEvent event) throws Exception {
     	mainActivity = FXMLLoader.load(getClass().getResource("../view/HomePage.fxml"));
-    	Scene scene = new Scene (mainActivity, 300, 500);
+    	Scene scene = new Scene (mainActivity, 800,600);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
