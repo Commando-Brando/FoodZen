@@ -14,14 +14,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainActivity" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.CartController">
+
+<AnchorPane fx:id="mainActivity" prefHeight="603.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.CartController">
    <children>
-      <ImageView fitHeight="158.0" fitWidth="201.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="618.0" fitWidth="814.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../graphics/foodZ.png" />
+            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Background.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="176.0" layoutY="62.0" prefHeight="68.0" prefWidth="110.0" text="Cart">
+      <ImageView fitHeight="150.0" fitWidth="151.0" layoutX="15.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Official_FoodZen_Logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="177.0" layoutY="62.0" prefHeight="68.0" prefWidth="110.0" text="Cart">
          <font>
             <Font name="Comic Sans MS Bold" size="45.0" />
          </font>
@@ -110,7 +116,7 @@
                </font></Label>
             <TextField fx:id="creditCardText" layoutX="29.0" layoutY="135.0" promptText="XXXX XXXX XXXX XXXX" />
             <Button layoutX="559.0" layoutY="174.0" mnemonicParsing="false" onAction="#processPayment" text="Place Order" />
-            <Label fx:id="result" layoutX="507.0" layoutY="29.0" prefHeight="125.0" prefWidth="221.0" />
+            <Label fx:id="result" layoutX="519.0" layoutY="21.0" prefHeight="125.0" prefWidth="221.0" />
             <ImageView fitHeight="43.0" fitWidth="271.0" layoutX="190.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/creditcardImage.jpg" />

@@ -17,9 +17,14 @@
 
 <AnchorPane fx:id="mainActivity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ShopController">
    <children>
-      <ImageView fitHeight="154.0" fitWidth="152.0" layoutX="20.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="614.0" fitWidth="814.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../graphics/foodZ.png" />
+            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Background.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="154.0" fitWidth="152.0" layoutX="15.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Official_FoodZen_Logo.png" />
          </image>
       </ImageView>
       <Label layoutX="188.0" layoutY="40.0" prefHeight="91.0" prefWidth="160.0" text="Shop">
