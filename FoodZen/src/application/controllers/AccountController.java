@@ -38,7 +38,10 @@ public class AccountController implements Initializable{
 	
 	// Label
 	@FXML
-	private Label accountPage;
+	private Label header1Label;
+	
+	@FXML
+	private Label header2Label;
 	
 	@FXML
 	private Label popLabel;
@@ -69,9 +72,6 @@ public class AccountController implements Initializable{
 	
 	@FXML
 	private Button registerButton;
-	
-	@FXML
-	private Button homeButton;
 
 	// Model
 	@FXML
@@ -106,16 +106,14 @@ public class AccountController implements Initializable{
 			guest.setVisible(false);
 			loginButton.setVisible(false);
 			registerButton.setVisible(false);
-			accountPage.setVisible(false);
+			header1Label.setVisible(false);
+			header2Label.setVisible(false);
 			// makes visible the welcome messages
 			popLabel.setVisible(true);
 			welcomeLabel.setText("Welcome " + key + "!");
 			welcomeLabel.setVisible(true);
 			couponLabel.setVisible(true);
 			enjoyLabel.setVisible(true);
-			// repositions the home button to be centered
-			homeButton.setLayoutX(350);
-			homeButton.setLayoutY(400);
 		}
 	}
 	
@@ -134,4 +132,44 @@ public class AccountController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 	}
+	
+	// Launches Cart scene
+    @FXML
+    void cartLaunch(ActionEvent event) throws Exception {
+    	mainActivity = FXMLLoader.load(getClass().getResource("../view/Cart.fxml"));
+    	Scene scene = new Scene (mainActivity,800,600);
+    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Window.setScene(scene);
+    	Window.show();
+    }
+    
+    // Alert to provide Contact information
+    @FXML
+ 	public void contactMe(ActionEvent event) {
+ 		Alert contact = new Alert(AlertType.CONFIRMATION,
+ 				"Account - account@foodzen.com - 555-265-1774\nManagement - management@foodzen.com - 555-265-9623\nSales - sales@foodzen.com - 555-265-1423\nTechnical Support - techsupport@foodzen.com - 555-265-8876\n");
+ 		contact.setTitle("Contact information");
+ 		contact.setHeaderText("Contact one of these departments with your Foodzen concerns");
+ 		contact.show();
+ 	}
+    
+    // Launches Shop scene
+    @FXML
+    void shopLaunch(ActionEvent event) throws IOException {
+    	mainActivity = FXMLLoader.load(getClass().getResource("../view/Shop.fxml"));
+    	Scene scene = new Scene (mainActivity,800,600);
+    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Window.setScene(scene);
+    	Window.show();
+    }
+    
+    // Launches Account scene
+    @FXML
+    void accountLaunch(ActionEvent event) throws Exception {
+    	mainActivity = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
+    	Scene scene = new Scene (mainActivity,800,600);
+    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Window.setScene(scene);
+    	Window.show();
+    }
 }
