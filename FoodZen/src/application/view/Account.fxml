@@ -49,9 +49,9 @@
          <font>
             <Font name="Comic Sans MS Bold" size="18.0" />
          </font></Button>
-      <Label fx:id="couponLabel" layoutX="91.0" layoutY="339.0" prefHeight="50.0" prefWidth="666.0" text="Weekly coupon for 10% off: BUDGET" visible="false">
+      <Label fx:id="couponLabel" layoutX="177.0" layoutY="343.0" prefHeight="50.0" prefWidth="666.0" text="Weekly coupon for 10% off: BUDGET" visible="false">
          <font>
-            <Font name="Comic Sans MS" size="35.0" />
+            <Font name="Comic Sans MS" size="29.0" />
          </font>
       </Label>
       <Label fx:id="header2Label" layoutX="265.0" layoutY="265.0" prefHeight="35.0" prefWidth="347.0" text="weekly coupons and more!">
@@ -59,19 +59,24 @@
             <Font name="Comic Sans MS Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="popLabel" layoutX="133.0" layoutY="406.0" prefHeight="50.0" prefWidth="624.0" text="Type your coupon in at checkout!" visible="false">
+      <Label fx:id="popLabel" layoutX="198.0" layoutY="402.0" prefHeight="50.0" prefWidth="624.0" text="Type your coupon in at checkout!" visible="false">
          <font>
-            <Font name="Comic Sans MS" size="35.0" />
+            <Font name="Comic Sans MS" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="welcomeLabel" layoutX="160.0" layoutY="217.0" prefHeight="113.0" prefWidth="638.0" text="Welcome Brandon" visible="false">
+      <Label fx:id="welcomeLabel" layoutX="191.0" layoutY="234.0" prefHeight="113.0" prefWidth="638.0" text="Welcome Brandon" visible="false">
          <font>
-            <Font name="Dominican Regular" size="86.0" />
+            <Font name="Dominican Regular" size="65.0" />
          </font>
       </Label>
-      <Label fx:id="enjoyLabel" layoutX="240.0" layoutY="478.0" prefHeight="50.0" prefWidth="340.0" text="Enjoy your shopping!" visible="false">
+      <Label fx:id="limitLabel" layoutX="254.0" layoutY="305.0" text="Username may not exceed 11 characters">
          <font>
-            <Font name="Comic Sans MS" size="35.0" />
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="enjoyLabel" layoutX="275.0" layoutY="465.0" prefHeight="50.0" prefWidth="340.0" text="Enjoy your shopping!" visible="false">
+         <font>
+            <Font name="Comic Sans MS" size="30.0" />
          </font>
       </Label>
       <HBox layoutX="363.0" layoutY="83.0" prefHeight="49.0" prefWidth="459.0" spacing="20.0">
@@ -101,11 +106,6 @@
       <Label layoutX="177.0" layoutY="62.0" prefHeight="64.0" prefWidth="196.0" text="Account">
          <font>
             <Font name="Comic Sans MS Bold" size="35.0" />
-         </font>
-      </Label>
-      <Label layoutX="254.0" layoutY="305.0" text="Username may not exceed 11 characters">
-         <font>
-            <Font size="18.0" />
          </font>
       </Label>
    </children>
