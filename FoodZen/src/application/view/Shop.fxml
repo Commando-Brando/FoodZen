@@ -19,12 +19,12 @@
    <children>
       <ImageView fitHeight="614.0" fitWidth="814.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Background.jpg" />
+            <Image url="@../graphics/Background.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="154.0" fitWidth="152.0" layoutX="15.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Official_FoodZen_Logo.png" />
+            <Image url="@../graphics/Official_FoodZen_Logo.png" />
          </image>
       </ImageView>
       <Label layoutX="188.0" layoutY="40.0" prefHeight="91.0" prefWidth="160.0" text="Shop">
@@ -128,7 +128,7 @@
             <Button fx:id="clearBudgetButton" layoutX="109.0" layoutY="131.0" mnemonicParsing="false" onAction="#processBudget" prefHeight="29.0" prefWidth="70.0" text="No Limit" />
          </children>
       </AnchorPane>
-      <HBox layoutX="313.0" layoutY="75.0" prefHeight="100.0" prefWidth="452.0" spacing="20.0">
+      <HBox layoutX="356.0" layoutY="72.0" prefHeight="100.0" prefWidth="452.0" spacing="20.0">
          <children>
             <Button fx:id="cartButton" mnemonicParsing="false" onAction="#cartLaunch" prefHeight="33.0" prefWidth="87.0" text="Cart">
                <font>

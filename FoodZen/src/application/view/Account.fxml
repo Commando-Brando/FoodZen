@@ -16,12 +16,12 @@
    <children>
       <ImageView fitHeight="618.0" fitWidth="814.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Background.jpg" />
+            <Image url="@../graphics/Background.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="166.0" fitWidth="185.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Official_FoodZen_Logo.png" />
+            <Image url="@../graphics/Official_FoodZen_Logo.png" />
          </image>
       </ImageView>
       <Label fx:id="header1Label" alignment="CENTER" layoutX="95.0" layoutY="227.0" prefHeight="56.0" prefWidth="638.0" text="Hello! Create an account to recieve">
@@ -69,7 +69,7 @@
             <Font name="Comic Sans MS" size="35.0" />
          </font>
       </Label>
-      <HBox layoutX="327.0" layoutY="83.0" prefHeight="49.0" prefWidth="459.0" spacing="20.0">
+      <HBox layoutX="363.0" layoutY="83.0" prefHeight="49.0" prefWidth="459.0" spacing="20.0">
          <children>
             <Button mnemonicParsing="false" onAction="#shopLaunch" prefHeight="33.0" prefWidth="87.0" text="Shop" wrapText="true">
                <font>
