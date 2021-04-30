@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="618.0" fitWidth="814.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Background.jpg" />
+            <Image url="@../graphics/Background.jpg" />
          </image>
       </ImageView>
       <Label layoutX="177.0" layoutY="62.0" prefHeight="64.0" prefWidth="196.0" text="Foodzen">
@@ -75,7 +75,7 @@
       <Label fx:id="titleLogo" layoutX="22.0" layoutY="41.0" prefHeight="135.0" prefWidth="151.0" />
       <ImageView fitHeight="150.0" fitWidth="151.0" layoutX="15.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Official_FoodZen_Logo.png" />
+            <Image url="@../graphics/Official_FoodZen_Logo.png" />
          </image>
       </ImageView>
    </children>
