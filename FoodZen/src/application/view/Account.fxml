@@ -24,7 +24,7 @@
             <Image url="@../graphics/Official_FoodZen_Logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="header1Label" alignment="CENTER" layoutX="95.0" layoutY="227.0" prefHeight="56.0" prefWidth="638.0" text="Hello! Create an account to recieve">
+      <Label fx:id="header1Label" alignment="CENTER" layoutX="95.0" layoutY="217.0" prefHeight="56.0" prefWidth="638.0" text="Hello! Create an account to recieve">
          <font>
             <Font name="Comic Sans MS Bold" size="24.0" />
          </font>
@@ -54,12 +54,17 @@
             <Font name="Comic Sans MS" size="35.0" />
          </font>
       </Label>
+      <Label fx:id="header2Label" layoutX="265.0" layoutY="265.0" prefHeight="35.0" prefWidth="347.0" text="weekly coupons and more!">
+         <font>
+            <Font name="Comic Sans MS Bold" size="24.0" />
+         </font>
+      </Label>
       <Label fx:id="popLabel" layoutX="133.0" layoutY="406.0" prefHeight="50.0" prefWidth="624.0" text="Type your coupon in at checkout!" visible="false">
          <font>
             <Font name="Comic Sans MS" size="35.0" />
          </font>
       </Label>
-      <Label fx:id="welcomeLabel" layoutX="163.0" layoutY="218.0" text="Welcome Brandon!" visible="false">
+      <Label fx:id="welcomeLabel" layoutX="160.0" layoutY="217.0" prefHeight="113.0" prefWidth="638.0" text="Welcome Brandon" visible="false">
          <font>
             <Font name="Dominican Regular" size="86.0" />
          </font>
@@ -98,9 +103,9 @@
             <Font name="Comic Sans MS Bold" size="35.0" />
          </font>
       </Label>
-      <Label fx:id="header2Label" layoutX="265.0" layoutY="283.0" prefHeight="35.0" prefWidth="347.0" text="weekly coupons and more!">
+      <Label layoutX="254.0" layoutY="305.0" text="Username may not exceed 11 characters">
          <font>
-            <Font name="Comic Sans MS Bold" size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
    </children>
