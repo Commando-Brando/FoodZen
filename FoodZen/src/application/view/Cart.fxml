@@ -118,7 +118,7 @@
             <Label fx:id="result" layoutX="519.0" layoutY="21.0" prefHeight="125.0" prefWidth="221.0" />
             <ImageView fitHeight="43.0" fitWidth="271.0" layoutX="190.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/creditcardImage.jpg" />
+                  <Image url="@../graphics/creditcardImage.jpg" />
                </image>
             </ImageView>
             <Label layoutX="29.0" layoutY="96.0" text="Credit Card Number" />
@@ -129,7 +129,7 @@
             <Label layoutX="278.0" layoutY="96.0" text="Expiration" />
             <Label layoutX="281.0" layoutY="198.0" text="CVV" />
             <Button layoutX="481.0" layoutY="239.0" mnemonicParsing="false" onAction="#cancelMenu" text="Return to Cart" />
-            <Button layoutX="620.0" layoutY="239.0" mnemonicParsing="false" onAction="#goShop" text="Return to Shop" />
+            <Button layoutX="620.0" layoutY="239.0" mnemonicParsing="false" onAction="#shopLaunch" text="Return to Shop" />
          </children>
       </AnchorPane>
       <HBox layoutX="354.0" layoutY="71.0" prefHeight="49.0" prefWidth="459.0" spacing="20.0">

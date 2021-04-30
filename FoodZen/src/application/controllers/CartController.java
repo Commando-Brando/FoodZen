@@ -108,21 +108,13 @@ public class CartController implements Initializable{
     @FXML
     void goHome(ActionEvent event) throws Exception {
     	mainActivity = FXMLLoader.load(getClass().getResource("../view/HomePage.fxml"));
-    	Scene scene = new Scene (mainActivity, 800, 600);
-    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    	Window.setScene(scene);
-    	Window.show();
-    }
-
-    @FXML
-    void goShop(ActionEvent event) throws Exception {
-    	mainActivity = FXMLLoader.load(getClass().getResource("../view/Shop.fxml"));
-    	Scene scene = new Scene (mainActivity, 800, 600);
+    	Scene scene = new Scene (mainActivity, 814,618);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
     }
     
+    // initializes the proper FXML scene variables, initializes a CartModel object, and checks to see if there is budget in budget.txt
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
     	try {
@@ -175,6 +167,8 @@ public class CartController implements Initializable{
     	
     }
     
+    
+    // goes through the cart HashMap and adds up the total with tax and returns it as a double
     public double getTotal() {
     	HashMap<String, String> h = modelCart.getCart();
     	Iterator it = h.entrySet().iterator();
@@ -187,7 +181,7 @@ public class CartController implements Initializable{
     	return total * 1.075;
     }
     
- // performs basic UI logic and model calls to add an item to the cart. it refreshes the cart ListView by calling loadCart() and has the model update the cart.properties file
+    // performs basic UI logic and model calls to add an item to the cart. it refreshes the cart ListView by calling loadCart() and has the model update the cart.properties file
     @FXML
     void addToCart(ActionEvent event) throws Exception {
     	String itemName = cartItemText.getText().toString();
@@ -308,7 +302,7 @@ public class CartController implements Initializable{
     	cartQuantityText.clear();
     }
     
- // method processes budget selection as onActions for the "confirm" & "no limit" buttons in the budget menu
+    // method processes budget selection as onActions for the "confirm" & "no limit" buttons in the budget menu
     @FXML
     public void processBudget(ActionEvent event) {
     	// if else checks which button was pressed
@@ -354,13 +348,13 @@ public class CartController implements Initializable{
     	this.modelCart.setBudget(this.budget);
     }
     
- // pops up payment menu
+    // pops up payment menu
     @FXML
     public void showMenu(ActionEvent event) {
     	paymentPane.setVisible(true);
     }
     
- // closes payment menu
+    // closes payment menu
     @FXML
     public void processPayment(ActionEvent event) {
     	// Credit Card Number
@@ -396,12 +390,13 @@ public class CartController implements Initializable{
     	}
     }
     
+    // cancels the paymentpane menu and sets it's visibility to false
     @FXML
     public void cancelMenu(ActionEvent event) {
     	paymentPane.setVisible(false);
-    	System.out.println();
     }
     
+    // checks to see if user coupon is correct and sets a label visibile displaying the new discount total
     @FXML
     public void applyCoupon(ActionEvent event) {
     	String userCoupon = couponText.getText().toString();
@@ -431,7 +426,7 @@ public class CartController implements Initializable{
     @FXML
     void shopLaunch(ActionEvent event) throws IOException {
     	mainActivity = FXMLLoader.load(getClass().getResource("../view/Shop.fxml"));
-    	Scene scene = new Scene (mainActivity,800,600);
+    	Scene scene = new Scene (mainActivity,814,618);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
@@ -441,7 +436,7 @@ public class CartController implements Initializable{
     @FXML
     void accountLaunch(ActionEvent event) throws Exception {
     	mainActivity = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
-    	Scene scene = new Scene (mainActivity,800,600);
+    	Scene scene = new Scene (mainActivity,814,618);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
