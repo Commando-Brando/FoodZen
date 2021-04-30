@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainActivity" prefHeight="570.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ShopController">
+<AnchorPane fx:id="mainActivity" prefHeight="570.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.ShopController">
    <children>
       <ImageView fitHeight="154.0" fitWidth="152.0" layoutX="20.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -140,5 +142,8 @@
             <Button fx:id="clearBudgetButton" layoutX="109.0" layoutY="131.0" mnemonicParsing="false" onAction="#processBudget" prefHeight="29.0" prefWidth="70.0" text="No Limit" />
          </children>
       </AnchorPane>
+      <Button layoutX="418.0" layoutY="73.0" mnemonicParsing="false" onAction="#cartLaunch" text="Cart" />
+      <Button layoutX="464.0" layoutY="73.0" mnemonicParsing="false" onAction="#accountLaunch" text="Account" />
+      <Button layoutX="530.0" layoutY="73.0" mnemonicParsing="false" onAction="#contactMe" text="Contact" />
    </children>
 </AnchorPane>

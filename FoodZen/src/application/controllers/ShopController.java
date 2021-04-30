@@ -306,6 +306,35 @@ public class ShopController implements Initializable{
     	Window.show();
     }
     
+    // Launches Cart scene
+    @FXML
+    void cartLaunch(ActionEvent event) throws Exception {
+    	mainActivity = FXMLLoader.load(getClass().getResource("../view/Cart.fxml"));
+    	Scene scene = new Scene (mainActivity,800,600);
+    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Window.setScene(scene);
+    	Window.show();
+    }
+    
+    // Launches Account scene
+    @FXML
+    void accountLaunch(ActionEvent event) throws Exception {
+    	mainActivity = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
+    	Scene scene = new Scene (mainActivity,800,600);
+    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Window.setScene(scene);
+    	Window.show();
+    }
+    
+    // Alert to provide Contact information
+ 	public void contactMe(ActionEvent event) {
+ 		Alert contact = new Alert(AlertType.CONFIRMATION,
+ 				"Account - account@foodzen.com - 555-265-1774\nManagement - management@foodzen.com - 555-265-9623\nSales - sales@foodzen.com - 555-265-1423\nTechnical Support - techsupport@foodzen.com - 555-265-8876\n");
+ 		contact.setTitle("Contact information");
+ 		contact.setHeaderText("Contact one of these departments with your Foodzen concerns");
+ 		contact.show();
+ 	}
+    
     // add to cart menu cancel button that hides the window 
     @FXML
     void cancelMenu(ActionEvent event) {
@@ -487,6 +516,8 @@ public class ShopController implements Initializable{
             	return;
     		}
     	}
+    	
+    	
     	
     	// below we set category to subtract for the model method and call the model to update the file. Then we reload the cart ListView
     	k.setCategory("subtract");
