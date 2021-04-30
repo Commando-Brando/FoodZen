@@ -436,5 +436,15 @@ public class CartController implements Initializable{
     	Window.setScene(scene);
     	Window.show();
     }
+    
+    // Launches Account scene
+    @FXML
+    void accountLaunch(ActionEvent event) throws Exception {
+    	mainActivity = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
+    	Scene scene = new Scene (mainActivity,800,600);
+    	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Window.setScene(scene);
+    	Window.show();
+    }
    
 }
