@@ -44,6 +44,9 @@ public class AccountController implements Initializable{
 	private Label header2Label;
 	
 	@FXML
+	private Label limitLabel;
+	
+	@FXML
 	private Label popLabel;
 	
 	@FXML
@@ -108,6 +111,7 @@ public class AccountController implements Initializable{
 			registerButton.setVisible(false);
 			header1Label.setVisible(false);
 			header2Label.setVisible(false);
+			limitLabel.setVisible(false);
 			// makes visible the welcome messages
 			popLabel.setVisible(true);
 			welcomeLabel.setText("Welcome " + key + "!");
