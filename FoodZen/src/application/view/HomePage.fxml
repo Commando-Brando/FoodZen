@@ -15,16 +15,16 @@
 
 <AnchorPane fx:id="launchActivity" prefHeight="618.0" prefWidth="814.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
    <children>
+      <ImageView fitHeight="618.0" fitWidth="814.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Background.jpg" />
+         </image>
+      </ImageView>
       <Label layoutX="177.0" layoutY="62.0" prefHeight="64.0" prefWidth="196.0" text="Foodzen">
          <font>
             <Font name="Comic Sans MS Bold" size="35.0" />
          </font>
       </Label>
-      <ImageView fitHeight="166.0" fitWidth="185.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../graphics/foodZ.png" />
-         </image>
-      </ImageView>
       <TextArea layoutX="39.0" layoutY="227.0" prefHeight="342.0" prefWidth="302.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Foodzen is a place where shoppers can feel more at ease about spending money on groceries. By setting a budget for yourself, the shopper is able to build around that, creating a grocery list they are satisfied with. Foodzen is shelved with all your grocery needs at affordable prices you wont find anywhere else. So if you are looking for something that will keep you sticking to a budget, then try out Foodzen and put your mind and wallet at peace." wrapText="true">
          <font>
             <Font name="Comic Sans MS Bold" size="15.0" />
@@ -72,5 +72,11 @@
             </Button>
          </children>
       </VBox>
+      <Label fx:id="titleLogo" layoutX="22.0" layoutY="41.0" prefHeight="135.0" prefWidth="151.0" />
+      <ImageView fitHeight="150.0" fitWidth="151.0" layoutX="15.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Documents/UTSA%20Edwin%20Work/4th%20sem/Application%20Programming/FoodZen/archive/Official_FoodZen_Logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
