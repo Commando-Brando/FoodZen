@@ -113,8 +113,8 @@ public class AccountController implements Initializable{
 			couponLabel.setVisible(true);
 			enjoyLabel.setVisible(true);
 			// repositions the home button to be centered
-			homeButton.setLayoutX(220);
-			homeButton.setLayoutY(240);
+			homeButton.setLayoutX(350);
+			homeButton.setLayoutY(400);
 		}
 	}
 	
