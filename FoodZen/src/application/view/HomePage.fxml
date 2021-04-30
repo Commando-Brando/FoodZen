@@ -8,50 +8,64 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="launchActivity" prefHeight="618.0" prefWidth="814.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
+<AnchorPane fx:id="launchActivity" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.MainController">
    <children>
-      <Label layoutX="213.0" layoutY="92.0" prefHeight="64.0" prefWidth="196.0" text="Foodzen">
+      <Label layoutX="177.0" layoutY="62.0" prefHeight="64.0" prefWidth="196.0" text="Foodzen">
          <font>
             <Font name="Comic Sans MS Bold" size="35.0" />
          </font>
       </Label>
-      <ImageView fitHeight="166.0" fitWidth="185.0" layoutX="33.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="166.0" fitWidth="185.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../graphics/foodZ.png" />
          </image>
       </ImageView>
-      <Button fx:id="shopButton" layoutX="385.0" layoutY="114.0" mnemonicParsing="false" onAction="#shopLaunch" prefHeight="33.0" prefWidth="87.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Shop" wrapText="true">
-         <font>
-            <Font name="Comic Sans MS Bold" size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="recipeOfTheWeek" layoutX="419.0" layoutY="246.0" mnemonicParsing="false" onAction="#recipeAlert" prefHeight="64.0" prefWidth="338.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Recipe of the Week">
-         <font>
-            <Font name="Comic Sans MS Bold" size="30.0" />
-         </font></Button>
-      <Button fx:id="newMonthlyItems" layoutX="419.0" layoutY="455.0" mnemonicParsing="false" onAction="#newItems" prefHeight="64.0" prefWidth="338.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="New Monthly Items">
-         <font>
-            <Font name="Comic Sans MS Bold" size="30.0" />
-         </font></Button>
-      <Button fx:id="saleOfTheWeek" layoutX="419.0" layoutY="355.0" mnemonicParsing="false" onAction="#saleAlert" prefHeight="64.0" prefWidth="338.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Sale of the Week">
-         <font>
-            <Font name="Comic Sans MS Bold" size="30.0" />
-         </font></Button>
-      <Button fx:id="cartButton" layoutX="472.0" layoutY="114.0" mnemonicParsing="false" onAction="#cartLaunch" prefHeight="33.0" prefWidth="87.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Cart">
-         <font>
-            <Font name="Comic Sans MS Bold" size="20.0" />
-         </font></Button>
-      <Button fx:id="accountButton" layoutX="559.0" layoutY="114.0" mnemonicParsing="false" onAction="#accountLaunch" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Account">
-         <font>
-            <Font name="Comic Sans MS Bold" size="20.0" />
-         </font></Button>
-      <Button fx:id="contactButton" layoutX="663.0" layoutY="114.0" mnemonicParsing="false" onAction="#contactMe" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Contact">
-         <font>
-            <Font name="Comic Sans MS Bold" size="20.0" />
-         </font></Button>
-      <TextArea layoutX="68.0" layoutY="246.0" prefHeight="320.0" prefWidth="274.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Foodzen is a place where shoppers can feel more at ease about spending money on groceries. By setting a budget for yourself, the shopper is able to build around that, creating a grocery list they are satisfied with. Foodzen is shelved with all your grocery needs at affordable prices you wont find anywhere else. So if you are looking for something that will keep you sticking to a budget, then try out Foodzen and put your mind and wallet at peace." wrapText="true">
+      <TextArea layoutX="39.0" layoutY="227.0" prefHeight="342.0" prefWidth="302.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Foodzen is a place where shoppers can feel more at ease about spending money on groceries. By setting a budget for yourself, the shopper is able to build around that, creating a grocery list they are satisfied with. Foodzen is shelved with all your grocery needs at affordable prices you wont find anywhere else. So if you are looking for something that will keep you sticking to a budget, then try out Foodzen and put your mind and wallet at peace." wrapText="true">
          <font>
             <Font name="Comic Sans MS Bold" size="15.0" />
          </font></TextArea>
+      <HBox layoutX="341.0" layoutY="83.0" prefHeight="49.0" prefWidth="459.0" spacing="20.0">
+         <children>
+            <Button fx:id="shopButton" mnemonicParsing="false" onAction="#shopLaunch" prefHeight="33.0" prefWidth="87.0" text="Shop" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="cartButton" mnemonicParsing="false" onAction="#cartLaunch" prefHeight="33.0" prefWidth="87.0" text="Cart">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="accountButton" mnemonicParsing="false" onAction="#accountLaunch" text="Account">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="contactButton" mnemonicParsing="false" onAction="#contactMe" text="Contact">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <VBox layoutX="377.0" layoutY="227.0" prefHeight="361.0" prefWidth="402.0" spacing="58.5">
+         <children>
+            <Button fx:id="recipeOfTheWeek" mnemonicParsing="false" onAction="#recipeAlert" prefHeight="75.0" prefWidth="396.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Recipe of the Week">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="newMonthlyItems" mnemonicParsing="false" onAction="#newItems" prefHeight="75.0" prefWidth="396.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="New Monthly Items">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="saleOfTheWeek" mnemonicParsing="false" onAction="#saleAlert" prefHeight="75.0" prefWidth="396.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Sale of the Week">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
