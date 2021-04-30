@@ -8,7 +8,7 @@ Description: FoodZen is a simulated ecommerce JavaFX application that allows use
 
 Known bugs: No known bugs
 
-Login info: username=Heena password=12345
+Login info: username=Heena password=12345 (login not required)
 
 Instructions to clone and run:
 
