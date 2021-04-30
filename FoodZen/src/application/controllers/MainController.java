@@ -58,7 +58,7 @@ public class MainController implements Initializable{
     @FXML
     void shopLaunch(ActionEvent event) throws IOException {
     	launchActivity = FXMLLoader.load(getClass().getResource("../view/Shop.fxml"));
-    	Scene scene = new Scene (launchActivity,800,600);
+    	Scene scene = new Scene (launchActivity,814,618);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
@@ -68,7 +68,7 @@ public class MainController implements Initializable{
     @FXML
     void cartLaunch(ActionEvent event) throws Exception {
     	launchActivity = FXMLLoader.load(getClass().getResource("../view/Cart.fxml"));
-    	Scene scene = new Scene (launchActivity,800,600);
+    	Scene scene = new Scene (launchActivity,814,618);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
@@ -78,7 +78,7 @@ public class MainController implements Initializable{
     @FXML
     void accountLaunch(ActionEvent event) throws Exception {
     	launchActivity = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
-    	Scene scene = new Scene (launchActivity,800,600);
+    	Scene scene = new Scene (launchActivity,814,618);
     	Stage Window = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	Window.setScene(scene);
     	Window.show();
