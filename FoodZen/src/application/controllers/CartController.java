@@ -398,6 +398,7 @@ public class CartController implements Initializable{
     @FXML
     public void cancelMenu(ActionEvent event) {
     	paymentPane.setVisible(false);
+    	System.out.println();
     }
     
     @FXML
