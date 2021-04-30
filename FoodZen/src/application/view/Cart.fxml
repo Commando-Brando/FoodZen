@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane fx:id="mainActivity" prefHeight="603.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.CartController">
    <children>
       <ImageView fitHeight="618.0" fitWidth="814.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
@@ -31,112 +32,79 @@
             <Font name="Comic Sans MS Bold" size="45.0" />
          </font>
       </Label>
-      <Label contentDisplay="CENTER" layoutX="577.0" layoutY="175.0" prefHeight="43.0" prefWidth="161.0" text="Your Items:">
+      <Label contentDisplay="CENTER" layoutX="364.0" layoutY="245.0" prefHeight="43.0" prefWidth="70.0" text="Cart:">
          <font>
-            <Font size="29.0" />
+            <Font size="27.0" />
          </font>
       </Label>
-      <Label fx:id="subTotalLabel" layoutX="543.0" layoutY="411.0" prefHeight="36.0" prefWidth="188.0" text="SubTotal: ####">
+      <Label fx:id="subTotalLabel" layoutX="553.0" layoutY="393.0" prefHeight="36.0" prefWidth="188.0" text="SubTotal: ####">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="taxLabel" layoutX="543.0" layoutY="439.0" prefHeight="36.0" prefWidth="188.0" text="Tax:          ####">
+      <Label fx:id="taxLabel" layoutX="553.0" layoutY="429.0" prefHeight="36.0" prefWidth="188.0" text="Tax:          ####">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="totalLabel" layoutX="543.0" layoutY="469.0" prefHeight="36.0" prefWidth="188.0" text="Total:       ####">
+      <Label fx:id="totalLabel" layoutX="553.0" layoutY="465.0" prefHeight="36.0" prefWidth="188.0" text="Total:       ####">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="553.0" layoutY="538.0" mnemonicParsing="false" onAction="#showMenu" prefHeight="40.0" prefWidth="180.0" text="Proceed to Payment">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button layoutX="60.0" layoutY="538.0" mnemonicParsing="false" onAction="#goHome" prefHeight="40.0" prefWidth="180.0" text="Return to Home">
+      <Button layoutX="553.0" layoutY="538.0" mnemonicParsing="false" onAction="#showMenu" prefHeight="44.0" prefWidth="210.0" text="Proceed to Payment">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <ListView fx:id="cartList" layoutX="543.0" layoutY="219.0" prefHeight="195.0" prefWidth="228.0" />
-      <Label layoutX="340.0" layoutY="175.0" text="Edit Cart">
+      <ListView fx:id="cartList" layoutX="291.0" layoutY="296.0" prefHeight="284.0" prefWidth="228.0" />
+      <Label layoutX="103.0" layoutY="399.0" text="Edit Cart">
          <font>
-            <Font size="29.0" />
+            <Font size="27.0" />
          </font>
       </Label>
-      <Label layoutX="290.0" layoutY="215.0" text="Item">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="288.0" layoutY="279.0" text="Quantity">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TextField fx:id="cartItemText" layoutX="290.0" layoutY="242.0" prefHeight="39.0" prefWidth="210.0" promptText="type item here" />
-      <TextField fx:id="cartQuantityText" layoutX="290.0" layoutY="309.0" prefHeight="39.0" prefWidth="210.0" promptText="type quantity here" />
-      <Button fx:id="addButton" layoutX="289.0" layoutY="356.0" mnemonicParsing="false" onAction="#addToCart" text="   add   ">
+      <TextField fx:id="cartItemText" layoutX="60.0" layoutY="447.0" prefHeight="39.0" prefWidth="210.0" promptText="type item here" />
+      <TextField fx:id="cartQuantityText" layoutX="60.0" layoutY="498.0" prefHeight="39.0" prefWidth="210.0" promptText="type quantity here" />
+      <Button fx:id="addButton" layoutX="38.0" layoutY="545.0" mnemonicParsing="false" onAction="#addToCart" text="   add   ">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="clearAllButton" layoutX="360.0" layoutY="356.0" mnemonicParsing="false" onAction="#subCart" text="clear all">
+      <Button fx:id="clearAllButton" layoutX="122.0" layoutY="545.0" mnemonicParsing="false" onAction="#subCart" text="clear all">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="subtractButton" layoutX="432.0" layoutY="356.0" mnemonicParsing="false" onAction="#subCart" text="subtract">
+      <Button fx:id="subtractButton" layoutX="212.0" layoutY="545.0" mnemonicParsing="false" onAction="#subCart" text="subtract">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Label layoutX="60.0" layoutY="175.0" text="Edit Budget">
-         <font>
-            <Font name="Comic Sans MS Bold" size="29.0" />
-         </font>
-      </Label>
-      <Label layoutX="30.0" layoutY="281.0" prefHeight="43.0" prefWidth="236.0" text="What is the max amount ">
-         <font>
-            <Font size="20.0" />
-         </font></Label>
-      <Label layoutX="30.0" layoutY="322.0" text="you would like to spend?">
-         <font>
-            <Font size="20.0" />
-         </font></Label>
-      <TextField fx:id="budgetText" layoutX="39.0" layoutY="375.0" prefHeight="39.0" prefWidth="210.0" promptText="type budget here" />
-      <Button fx:id="clearBudgetButton" layoutX="63.0" layoutY="430.0" mnemonicParsing="false" onAction="#processBudget" text="No Limit">
+      <TextField fx:id="budgetText" layoutX="60.0" layoutY="297.0" prefHeight="39.0" prefWidth="210.0" promptText="type budget here" />
+      <Button fx:id="clearBudgetButton" layoutX="70.0" layoutY="350.0" mnemonicParsing="false" onAction="#processBudget" text="No Limit">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="confirmBudgetButton" layoutX="141.0" layoutY="430.0" mnemonicParsing="false" onAction="#processBudget" text="Confirm">
+      <Button fx:id="confirmBudgetButton" layoutX="176.0" layoutY="350.0" mnemonicParsing="false" onAction="#processBudget" text="Confirm">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Label fx:id="budgetLabel" layoutX="30.0" layoutY="230.0" prefHeight="36.0" prefWidth="199.0" text="Budget">
+      <Label fx:id="budgetLabel" layoutX="60.0" layoutY="248.0" prefHeight="39.0" prefWidth="210.0" text="Budget: No Limit">
          <font>
-            <Font size="25.0" />
+            <Font size="27.0" />
          </font>
       </Label>
-      <Button layoutX="308.0" layoutY="538.0" mnemonicParsing="false" onAction="#goShop" prefHeight="40.0" prefWidth="180.0" text="Return to Shop">
+      <Label layoutX="607.0" layoutY="248.0" text="Coupon">
          <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Label layoutX="345.0" layoutY="388.0" text="Coupon">
-         <font>
-            <Font size="29.0" />
+            <Font size="27.0" />
          </font>
       </Label>
-      <TextField fx:id="couponText" layoutX="293.0" layoutY="426.0" prefHeight="39.0" prefWidth="210.0" promptText="type coupon here" />
-      <Button fx:id="couponButton" layoutX="326.0" layoutY="481.0" mnemonicParsing="false" onAction="#applyCoupon" text="Apply Coupon" />
-      <Label fx:id="totalWithCoupon" layoutX="543.0" layoutY="499.0" prefHeight="36.0" prefWidth="236.0">
+      <TextField fx:id="couponText" layoutX="550.0" layoutY="297.0" prefHeight="39.0" prefWidth="210.0" promptText="type coupon here" />
+      <Button fx:id="couponButton" layoutX="601.0" layoutY="350.0" mnemonicParsing="false" onAction="#applyCoupon" text="Apply Coupon" />
+      <Label fx:id="totalWithCoupon" layoutX="550.0" layoutY="495.0" prefHeight="36.0" prefWidth="236.0">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="couponApplied" layoutX="324.0" layoutY="474.0" prefHeight="39.0" prefWidth="161.0" text="Coupon Applied!" visible="false">
+      <Label fx:id="couponApplied" layoutX="574.0" layoutY="343.0" prefHeight="39.0" prefWidth="161.0" text="Coupon Applied!" visible="false">
          <font>
             <Font size="20.0" />
          </font></Label>
@@ -165,5 +133,29 @@
             <Button layoutX="620.0" layoutY="239.0" mnemonicParsing="false" onAction="#goShop" text="Return to Shop" />
          </children>
       </AnchorPane>
+      <HBox layoutX="311.0" layoutY="80.0" prefHeight="49.0" prefWidth="459.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#shopLaunch" prefHeight="33.0" prefWidth="87.0" text="Shop" wrapText="true">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#accountLaunch" text="Account">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#contactMe" text="Contact">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#goHome" prefHeight="33.0" prefWidth="87.0" text="Home">
+               <font>
+                  <Font name="Comic Sans MS Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

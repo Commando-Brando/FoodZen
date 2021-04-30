@@ -327,6 +327,16 @@ public class ShopController implements Initializable{
     	
     	// if onClick listener ListView addButton then proceed else it is add from editCart menu
     	if(event.getSource().equals(addButton)) {
+    		
+    		// error trap for empty TextField
+    		if(cartAmountText.getText().toString().equals("")) {
+    			Alert a = new Alert(AlertType.NONE);
+		    	a.setAlertType(AlertType.ERROR);
+		    	a.setContentText("Please enter an amount and try again");
+		    	a.show();
+		    	return;
+    		}
+    		
 	    	quantity = cartAmountText.getText().toString();
 	    	cartAmountText.clear();
 	    	
