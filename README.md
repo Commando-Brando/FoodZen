@@ -1,3 +1,5 @@
+CS 3443 Application Programming Group Project Spring 2021
+
 Project: FoodZen
 
 Team name: K-E-B
